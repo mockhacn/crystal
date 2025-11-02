@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>공연 - CRYSTAL</title>
+  <script src="https://kit.fontawesome.com/3d9d8b9e6e.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* 폰트 및 기본 설정 */
+    @font-face {
+        font-family: 'Pretendard';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: 'Pretendard';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+        font-weight: 600;
+    }
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Pretendard', sans-serif;}
+    body, html {
+      height: 100%;
+      background-color: #111111;
+      color: white;
+      margin: 0;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed; top:0; left:0; width:100%;
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 20px 50px;
+      background: transparent;
+      color: white;
+      z-index: 1000;
+    }
+    header .logo { font-weight: bold; cursor: pointer; }
+    nav ul { list-style: none; display: flex; gap: 50px; }
+    nav ul li a {
+      color: white; text-decoration: none; font-weight: 500; transition: color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active { color: #f0c040; }
+
+    /* FOOTER */
+    .footer {
+      background-color: #1a1a1a; color: #aaa; padding: 60px 40px;
+      border-top: 1px solid #222; font-size: 0.9rem;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto; display: flex;
+      justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;
+    }
+    .footer-logo { height: 40px; margin-bottom: 15px; }
+    .footer-right a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+    .footer-icons a { color: #ccc; font-size: 1.4rem; margin-left: 15px; transition: color 0.3s; }
+
+    /* =======================================
+       공연 페이지 (Performances Section) 스타일
+       ======================================= */
+    .performances-page {
+      padding: 120px 20px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* 공연 구분 탭 (정기공연 | 비정기공연) */
+    .performance-type-tabs {
+      text-align: right; /* 이미지처럼 오른쪽 정렬 */
+      margin-bottom: 30px;
+    }
+    .performance-type-tabs .type-button {
+      background: none;
+      border: none;
+      color: #aaa;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 5px 10px;
+      margin-left: 15px;
+      transition: color 0.3s;
+    }
+    .performance-type-tabs .type-button.active {
+      color: white; /* 활성화된 탭 색상 */
+      font-weight: 600;
+    }
+    /* 구분선 */
+    .performance-type-tabs span {
+        color: #555;
+    }
+
+    /* 페이지 제목 및 드롭다운 */
+    .title-area {
+        text-align: center;
+        position: relative;
+        margin-bottom: 40px;
+        padding-bottom: 10px;
+    }
+    .title-area h1 {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .title-area .divider {
+        width: 50px;
+        height: 3px;
+        background-color: white;
+        margin: 10px auto 0;
+    }
+    .title-area .controls {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* 기수 선택 드롭다운 */
+    .title-area select {
+        padding: 8px 15px;
+        font-size: 1rem;
+        border-radius: 5px;
+        background-color: #222;
+        color: white;
+        border: 1px solid #444;
+        cursor: pointer;
+    }
+
+    /* 공연 내용 영역 */
+    #performance-content {
+        min-height: 500px; /* 임시 높이 */
+        background-color: #000; /* 내용을 채울 검은색 영역 */
+        border-radius: 8px;
+        padding: 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 공연 이미지 스타일 (예시) */
+    .performance-detail img {
+        max-width: 20%;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 6px;
+    }
+    .performance-detail h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    .performance-detail p {
+        font-size: 1rem;
+        color: #ccc;
+        line-height: 1.6;
+        max-width: 800px;
+        text-align:center;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+        .title-area .controls {
+            position: static;
+            transform: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .title-area { padding-bottom: 20; }
+        .performance-type-tabs { text-align: center; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" onclick="location.href='main.html'">
+      <img src="logo.png" alt="CRYSTAL 로고" style="height:40px; cursor:pointer;">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="about.html">동아리</a></li>
+        <li><a href="members.html">단원</a></li>
+        <li><a href="performances.html">공연</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="performances-page">
+
+    <div class="performance-type-tabs">
+      <button class="type-button active" data-type="regular" id="regular-btn">정기공연</button>
+      <span>|</span>
+      <button class="type-button" data-type="irregular" id="irregular-btn">비정기공연</button>
+    </div>
+
+    <div class="title-area">
+      <h1 id="page-title">정기 공연</h1>
+      <div class="divider"></div>
+      
+      <div class="controls">
+        <select id="generation-select">
+          <option value="8" selected>기수를 선택해주세요</option> 
+          <option value="8">제 8기 정기공연</option> 
+          <option value="7">제 7기 정기공연</option>
+          <option value="6">제 6기 정기공연</option>
+          <option value="5">제 5기 정기공연</option>
+          <option value="4">제 4기 정기공연</option>
+          <option value="3">제 3기 정기공연</option>
+          <option value="2">제 2기 정기공연</option>
+          <option value="1">제 1기 정기공연</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="performance-content">
+        <p style="color: #888;">
+            상단 드롭다운에서 기수를 선택하여 해당 기수의 공연 정보를 확인해 주세요.
+        </p>
+    </div>
+    
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="logo.png" alt="CRYSTAL 로고" class="footer-logo" style="height:40px;">
+        <p>CRYSTAL (크리스탈, 성신여자대학교 아마추어 오케스트라 동아리)</p>
+        <p>Copyright © CRYSTAL. ALL RIGHTS RESERVED.</p>
+      </div>
+
+      <div class="footer-right">
+        <p><a href="regulations.html">CRYSTAL 회칙</a> | <a href="supporters.html">만든사람들</a></p>
+        <div class="footer-icons">
+          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. 기수별/타입별 공연 데이터 (실제 데이터로 채워야 함)
+    const performanceData = {
+        'regular': {
+            '8': { 
+                title: "제 8기 정기공연", 
+                image: "7th.png", // 실제 이미지 경로로 수정
+                details: "제 8기 단원들이 준비한 정기 연주회입니다. 베토벤 교향곡 5번과 엘가의 위풍당당 행진곡을 연주했습니다.",
+                date: "2025년 11월 30일"
+            },
+            '7': { 
+                title: "제 7기 정기공연", 
+                image: "7th.png",
+                details: "크리스탈 7기 정기연주회의 주제는 악상기호 '열정적으로'를 뜻하는 'PASSIONATO'입니다. 이번 공연은 창단 이래 처음으로 클래식 곡들만을 다루며, 크리스탈의 새로운 도전을 담고 있습니다. 'PASSIONATE'는 단원들의 열정과 헌신을 상징하며, 각자의 자리에서 끊임없이 노력하며 함께 성장한 단원들의 마음은 마치 강렬한 불꽃처럼 무대를 가득 채울 것입니다.",
+                date: "2025년 1월 7일 화요일 오후 7시"
+            },
+            // 1기부터 6기까지 데이터 추가...
+        },
+        'irregular': {
+            '8': { 
+                title: "제 8기 비정기공연 (버스킹)", 
+                image: "images/irreg_8th.jpg",
+                details: "교내 잔디밭에서 진행된 소규모 버스킹 공연입니다.",
+                date: "2025년 5월 15일"
+            },
+            '7': { 
+                title: "제 7기 비정기공연 (찾아가는 음악회)", 
+                image: "images/irreg_7th.jpg",
+                details: "지역 복지관을 찾아가 재능 기부 연주를 진행했습니다.",
+                date: "2024년 4월 10일"
+            },
+            // 1기부터 6기까지 데이터 추가...
+        }
+    };
+
+    const generationSelect = document.getElementById('generation-select');
+    const pageTitle = document.getElementById('page-title');
+    const performanceContent = document.getElementById('performance-content');
+    const typeButtons = document.querySelectorAll('.type-button');
+    
+    let currentType = 'regular'; // 초기 공연 타입: 정기공연
+    let currentGeneration = generationSelect.value; // 초기 기수 (선택 안함)
+
+    // 2. 공연 정보를 렌더링하는 함수 (사진과 글을 표시)
+    function renderPerformance() {
+        if (!currentGeneration || currentGeneration === '8' && currentType === 'regular') {
+             // '기수를 선택해주세요'가 선택된 경우
+            performanceContent.innerHTML = `<p style="color: #888;">상단 드롭다운에서 기수를 선택하여 해당 기수의 공연 정보를 확인해 주세요.</p>`;
+            return;
+        }
+
+        const data = performanceData[currentType][currentGeneration];
+
+        if (data) {
+            performanceContent.innerHTML = `
+                <div class="performance-detail">
+                    <img src="${data.image || 'placeholder.png'}" alt="${data.title} 포스터" />
+                    <h2>${data.title}</h2>
+                    <p>${data.details}</p>
+                    <p style="margin-top: 15px; font-weight: 600;">일시: ${data.date}</p>
+                </div>
+            `;
+        } else {
+            // 해당 기수/타입의 데이터가 없는 경우
+            performanceContent.innerHTML = `<p style="color: #aaa; padding: 50px 0;">
+                제 ${currentGeneration}기 ${currentType === 'regular' ? '정기공연' : '비정기공연'} 정보가 아직 준비되지 않았습니다.
+            </p>`;
+        }
+    }
+
+    // 3. 공연 타입(정기/비정기) 변경 시 드롭다운 텍스트 업데이트
+    function updateGenerationOptions(type) {
+        generationSelect.innerHTML = ''; // 기존 옵션 삭제
+        
+        // '선택해주세요' 옵션 추가
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = '기수를 선택해주세요';
+        defaultOption.setAttribute('selected', 'selected');
+        generationSelect.appendChild(defaultOption);
+
+        const suffix = type === 'regular' ? ' 정기공연' : ' 비정기공연';
+        
+        // 8기부터 1기까지 역순으로 옵션 추가
+        for (let i = 8; i >= 1; i--) {
+            const option = document.createElement('option');
+            option.value = i.toString();
+            option.textContent = `제 ${i}기` + suffix;
+            generationSelect.appendChild(option);
+        }
+        
+        // currentGeneration 초기화 및 렌더링 (새 타입 선택 시 명단 초기화)
+        currentGeneration = '';
+        renderPerformance(); 
+    }
+
+    // 4. 이벤트 리스너 설정
+    
+    // 공연 타입 탭 클릭 이벤트 (정기/비정기)
+    typeButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // 탭 활성화/비활성화
+            typeButtons.forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            currentType = e.target.dataset.type;
+            pageTitle.textContent = currentType === 'regular' ? '정기 공연' : '비정기 공연';
+            
+            updateGenerationOptions(currentType); // 드롭다운 옵션 업데이트
+        });
+    });
+
+    // 기수 선택 변경 이벤트
+    generationSelect.addEventListener('change', (e) => {
+        currentGeneration = e.target.value;
+        renderPerformance();
+    });
+
+    // 초기 로드 시 실행
+    document.addEventListener('DOMContentLoaded', () => {
+        // 초기 '정기공연'에 맞게 드롭다운 옵션 설정 및 내용 초기화
+        updateGenerationOptions(currentType);
+    });
+
+  </script>
+
+</body>
+</html>

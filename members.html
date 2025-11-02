@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>단원 명단 - CRYSTAL</title>
+  <link rel="stylesheet" href="style.css"> 
+  <script src="https://kit.fontawesome.com/3d9d8b9e6e.js" crossorigin="anonymous"></script>
+
+  <style>
+/* 폰트 정의 */
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2'); font-weight: 100; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2'); font-weight: 200; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2'); font-weight: 300; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2'); font-weight: 900; font-display: swap;}
+
+/* 전체 스타일 */
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Pretendard', sans-serif;}
+body, html {height: 100%; background-color: #111111; color: white; margin: 0;}
+header {position: fixed; top:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding: 20px 50px; background: transparent; color: white; z-index: 1000;}
+header .logo {font-weight: bold; cursor: pointer;}
+nav ul {list-style: none; display: flex; gap: 50px;}
+nav ul li a {color: white; text-decoration: none; font-weight: 500; transition: color 0.3s;}
+nav ul li a:hover {color: #f0c040;}
+.members-page {padding: 120px 20px 80px; max-width: 1200px; margin: 0 auto;}
+.members-page h1 {font-size: 2rem; text-align: center; margin-bottom: 40px;}
+.controls {display: flex; justify-content: flex-end; align-items: center; margin-bottom: 20px; gap: 10px; flex-wrap: wrap;}
+.controls select {padding: 8px 15px; font-size: 1rem; border-radius: 5px; background-color: #222; color: white; border: 1px solid #444; cursor: pointer;}
+.member-tabs {display: flex; justify-content: center; margin-bottom: 30px; border-bottom: 1px solid #333;}
+.member-tabs button {background: none; border: none; padding: 15px 30px; color: #888; font-size: 1rem; font-weight: 500; cursor: pointer; transition: color 0.3s, border-bottom 0.3s;}
+.member-tabs button.active {color: white; border-bottom: 3px solid white;}
+.member-grid {display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 20px 0;}
+@media (min-width: 1000px) {.member-grid {grid-template-columns: repeat(4, 1fr); gap: 25px;}}
+.image-card {background-color: #333333; color: white; border-radius: 8px; padding: 15px 10px; text-align: center; min-height: 85px; display: flex; flex-direction: column; justify-content: center;}
+.image-card h3 {font-size: 1rem; margin-bottom: 3px; font-weight: 600;}
+.image-card .grade-role {font-size: 0.75rem; color: #ccc; margin-bottom: 3px; line-height: 1.3;}
+.image-card .instrument {background-color: #222222; color: #fff; padding: 6px 8px; border-radius: 2px; font-size: 0.75rem; display: inline-block; font-weight: 500;}
+.footer {background-color: #1a1a1a; color: #aaa; padding: 60px 40px; border-top: 1px solid #222; font-size: 0.9rem;}
+.footer-inner {max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;}
+.footer-left {flex: 1 1 300px;}
+.footer-logo {height: 40px; margin-bottom: 15px;}
+.footer-right {text-align: right; flex: 1 1 300px;}
+.footer-right a {color: #ccc; text-decoration: none; transition: color 0.3s;}
+.footer-right a:hover {color: white;}
+.footer-icons {margin-top: 15px;}
+.footer-icons a {color: #ccc; font-size: 1.4rem; margin-left: 15px; transition: color 0.3s;}
+.footer-icons a:hover {color: white;}
+@media (max-width: 768px) {.footer-inner {flex-direction: column; text-align: center; align-items: center;}.footer-right {text-align: center;}.footer-icons a {margin: 0 10px;}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'">
+    <img src="logo.png" alt="CRYSTAL 로고" style="height:40px; cursor:pointer;">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="about.html">동아리</a></li>
+      <li><a href="members.html">단원</a></li>
+      <li><a href="performances.html">공연</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="members-page">
+  <h1>단원</h1>
+
+  <div class="controls">
+    <select id="generation-select">
+      <option value="" selected>기수를 선택해주세요</option> 
+      <option value="1">1기</option> 
+      <option value="2">2기</option>
+      <option value="3">3기</option>
+      <option value="4">4기</option>
+      <option value="5">5기</option>
+      <option value="6">6기</option>
+      <option value="7">7기</option>
+      <option value="8">8기</option>
+    </select>
+    <select id="instrument-select">
+      <option value="all" selected>전체 악기</option>
+    </select>
+  </div>
+
+  <div class="member-tabs">
+    <button class="tab-button active" data-role="all">전체단원</button>
+    <button class="tab-button" data-role="management">운영진</button>
+    <button class="tab-button" data-role="chief">수석진</button>
+    <button class="tab-button" data-role="conductor">지휘자</button>
+    <button class="tab-button" data-role="professor">담당교수님</button>
+  </div>
+
+  <div class="member-grid" id="member-list"></div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <img src="logo.png" alt="CRYSTAL 로고" class="footer-logo">
+      <p>CRYSTAL (크리스탈, 성신여자대학교 아마추어 오케스트라 동아리)</p>
+      <p>Copyright © CRYSTAL. ALL RIGHTS RESERVED.</p>
+    </div>
+    <div class="footer-right">
+      <p><a href="regulations.html">CRYSTAL 회칙</a> | <a href="supporters.html">만든사람들</a></p>
+      <div class="footer-icons">
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+const memberData = {
+  '8': [
+    { name:"고다형", roles:["all"], instrument:"제2바이올린", gradeRole:"차석" },
+    { name:"권민서", roles:["all"], instrument:"플루트", gradeRole:"차석" },
+    { name:"길다은", roles:["all"], instrument:"제1바이올린", gradeRole:"차석" },
+    { name:"김규림", roles:["chief","all"], instrument:"오보에", gradeRole:"수석" },
+    { name:"김소리", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"김지현", roles:["management","all"], instrument:"클라리넷", gradeRole:"회장, 차석" },
+    { name:"김태영", roles:["chief","all"], instrument:"클라리넷", gradeRole:"수석" },
+   { name:"민경민", roles:["chief","all"], instrument:"비올라", gradeRole:"수석" },
+   { name:"박소율", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+   { name:"백송은", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+   { name:"서혜림", roles:["chief","all"], instrument:"첼로", gradeRole:"수석" },
+   { name:"안소이", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+   { name:"오시연", roles:["all"], instrument:"플루트", gradeRole:"전체단원" },
+    { name:"이도경", roles:["management","chief","all"], instrument:"제1바이올린", gradeRole:"악장" },
+   { name:"이서영", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+   { name:"이서현", roles:["all"], instrument:"클라리넷", gradeRole:"전체단원" },
+    { name:"이유진", roles:["chief","all"], instrument:"제2바이올린", gradeRole:"수석" },
+    { name:"전서영", roles:["chief","all"], instrument:"트럼펫", gradeRole:"수석" },
+   { name:"정유진", roles:["chief","all"], instrument:"플루트", gradeRole:"수석" },  
+  { name:"진혜윤", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+  { name:"하채연", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+  { name:"허지인", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+  { name:"홍예리", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" }
+  ],
+  '7': [
+    { name:"민경민", roles:["management","all"], instrument:"제1바이올린", gradeRole:"회장" },
+    { name:"이준희", roles:["management","all"], instrument:"비올라", gradeRole:"부회장, 차석" },
+    { name:"김진현", roles:["management","all","chief"], instrument:"제1바이올린", gradeRole:"악장" },
+    { name:"박수진", roles:["management","all"], instrument:"제1바이올린", gradeRole:"총무계, 차석" },
+    { name:"한명진", roles:["chief","all"], instrument:"제2바이올린", gradeRole:"수석" },
+    { name:"이유진", roles:["all"], instrument:"제2바이올린", gradeRole:"차석" },
+    { name:"권민서", roles:["all"], instrument:"플루트", gradeRole:"전체단원" },
+    { name:"길다은", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"고다형", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"김규림", roles:["chief","all"], instrument:"오보에", gradeRole:"수석" },
+    { name:"김원영", roles:["chief","all"], instrument:"첼로", gradeRole:"수석" },
+    { name:"김지현", roles:["chief","all"], instrument:"클라리넷", gradeRole:"수석" },
+    { name:"김태영", roles:["all"], instrument:"클라리넷", gradeRole:"전체단원" },
+    { name:"김하윤", roles:["management","all","chief"], instrument:"플루트", gradeRole:"악보계, 수석" },
+    { name:"백송은", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"서혜림", roles:["all"], instrument:"첼로", gradeRole:"차석" },
+    { name:"안소이", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"양희재", roles:["all"], instrument:"클라리넷", gradeRole:"차석" },
+    { name:"오서진", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"우승연", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"유다희", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"이도경", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"이손지", roles:["management","all","chief"], instrument:"비올라", gradeRole:"대외협력계, 수석" },
+    { name:"이예림", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"전서영", roles:["chief","all"], instrument:"트럼펫", gradeRole:"수석" },
+    { name:"정유진", roles:["all"], instrument:"플루트", gradeRole:"차석" },
+    { name:"진희나", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"최서연", roles:["management","all"], instrument:"제1바이올린", gradeRole:"홍보계" },
+    { name:"허지인", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"홍예리", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"나현묵", roles:["conductor"], instrument:"지휘", gradeRole:"제7기 지휘자" }
+  ],
+  '6': [
+    { name:"최서연", roles:["chief","all"], instrument:"제1바이올린", gradeRole:"수석" },
+    { name:"박서진", roles:["chief","all"], instrument:"제2바이올린", gradeRole:"수석" },
+    { name:"이손지", roles:["chief","all"], instrument:"비올라", gradeRole:"수석" },
+    { name:"권우진", roles:["chief","all","management"], instrument:"첼로", gradeRole:"악장" },
+    { name:"김아진", roles:["chief","all"], instrument:"플루트", gradeRole:"수석" },
+    { name:"한서연", roles:["chief","all"], instrument:"베이스트롬본", gradeRole:"수석" },
+    { name:"김주은", roles:["chief","all"], instrument:"피아노", gradeRole:"수석" },
+    { name:"진희나", roles:["chief","all"], instrument:"퍼커션", gradeRole:"수석" },
+    { name:"임규빈", roles:["management","all"], instrument:"첼로", gradeRole:"회장, 차석" },
+    { name:"한명진", roles:["management","all"], instrument:"제1바이올린", gradeRole:"부회장, 차석" },
+    { name:"유다희", roles:["management","all"], instrument:"제1바이올린", gradeRole:"대외협력계" },
+    { name:"조민지", roles:["management","all"], instrument:"제1바이올린", gradeRole:"악보계" },
+    { name:"오주이", roles:["management","all"], instrument:"비올라", gradeRole:"총무계" },
+    { name:"이지현", roles:["management","all"], instrument:"제1바이올린", gradeRole:"홍보계" },
+    { name:"정혜민", roles:["all"], instrument:"플루트", gradeRole:"차석" },
+    { name:"김하윤", roles:["all"], instrument:"플루트", gradeRole:"전체단원" },
+    { name:"이소민", roles:["all"], instrument:"플루트", gradeRole:"전체단원" },
+    { name:"장사랑", roles:["all"], instrument:"플루트", gradeRole:"전체단원" },
+    { name:"김지현", roles:["chief","all"], instrument:"클라리넷", gradeRole:"수석" },
+    { name:"김원영", roles:["all"], instrument:"첼로", gradeRole:"차석" },
+    { name:"서혜림", roles:["all"], instrument:"첼로", gradeRole:"전체단원" },
+    { name:"민경민", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"박수진", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"이연우", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"이예림", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"이준희", roles:["all"], instrument:"제2바이올린", gradeRole:"차석" },
+    { name:"구도언", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"김소리", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"우승연", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"윤진", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"이유진", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"하채연", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"최현진", roles:["all"], instrument:"비올라", gradeRole:"전체단원" },
+    { name:"김강현", roles:["conductor"], instrument:"지휘", gradeRole:"제6기 지휘자" },
+    { name:"담당교수님C", roles:["professor"], instrument:"전공교수", gradeRole:"담당교수님, 전공교수" }
+  ],
+    '5': [
+    { name:"한서연", roles:["management","chief","all"], instrument:"베이스트롬본", gradeRole:"회장, 수석" },
+    { name:"권우진", roles:["management","chief","all"], instrument:"첼로", gradeRole:"부회장, 수석" },
+    { name:"윤진", roles:["management","chief","all"], instrument:"제1바이올린", gradeRole:"악장, 수석" },
+    { name:"이지현", roles:["chief","all","management"], instrument:"제2바이올린", gradeRole:"홍보계,수석" },
+    { name:"김원영", roles:["management","all"], instrument:"첼로", gradeRole:"대외협력계, 차석" },
+    { name:"박수진", roles:["management","all"], instrument:"제1바이올린", gradeRole:"악보계" },
+    { name:"김수하", roles:["management","all"], instrument:"서포터", gradeRole:"운영지원" },
+    { name:"박제인", roles:["management","all"], instrument:"첼로", gradeRole:"운영지원" },
+    { name:"진희나", roles:["chief","all"], instrument:"퍼커션", gradeRole:"수석" },
+    { name:"오주이", roles:["chief","all"], instrument:"피아노", gradeRole:"수석" },
+    { name:"김아진", roles:["chief","all"], instrument:"플루트", gradeRole:"수석" },
+    { name:"이채연", roles:["all"], instrument:"플루트", gradeRole:"전체단원" },
+    { name:"정혜민", roles:["all"], instrument:"플루트", gradeRole:"전체단원" },
+    { name:"양희재", roles:["all"], instrument:"클라리넷", gradeRole:"전체단원" },
+    { name:"이정인", roles:["all"], instrument:"클라리넷", gradeRole:"전체단원" },
+    { name:"서혜림", roles:["all"], instrument:"첼로", gradeRole:"전체단원" },    
+    { name:"임규빈", roles:["all"], instrument:"첼로", gradeRole:"전체단원" }, 
+    { name:"한명진", roles:["all"], instrument:"제1바이올린", gradeRole:"차석" },
+    { name:"이연우", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"정미래", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"조민지", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"차경민", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"최서연", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"한혜원", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"황규원", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"김소리", roles:["all"], instrument:"제2바이올린", gradeRole:"차석" },
+    { name:"민경민", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"박서진", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"유다희", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"이준희", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"임지은", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"하채연", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"인세정", roles:["chief","all"], instrument:"비올라", gradeRole:"수석" },
+    { name:"나현묵", roles:["conductor"], instrument:"지휘", gradeRole:"제5기 지휘자" },
+    { name:"담당교수님C", roles:["professor"], instrument:"전공교수", gradeRole:"담당교수님, 전공교수" }
+  ],
+    '4': [
+    { name:"박제인", roles:["management","all"], instrument:"첼로", gradeRole:"회장" },
+    { name:"임규빈", roles:["management","all"], instrument:"첼로", gradeRole:"공동부회장, 총무계" },
+    { name:"황도원", roles:["chief","management","all"], instrument:"퍼스트플루트", gradeRole:"공동부회장, 총무계, 수석" },
+    { name:"윤진", roles:["chief","management","all"], instrument:"제1바이올린", gradeRole:"악장" },
+    { name:"배소현", roles:["management","all"], instrument:"서포터", gradeRole:"홍보계" },
+    { name:"김수하", roles:["chief","management","all"], instrument:"비올라", gradeRole:"악보계, 수석" },
+    { name:"박솔미", roles:["chief","management","all"], instrument:"세컨드플루트", gradeRole:"대외협력계, 수석" },    
+    { name:"임수진", roles:["chief","all"], instrument:"피아노", gradeRole:"수석" },   
+    { name:"선동은", roles:["chief","all"], instrument:"피아노", gradeRole:"수석" }, 
+    { name:"한서연", roles:["chief","all"], instrument:"베이스트롬본", gradeRole:"수석" }, 
+    { name:"송수아", roles:["all"], instrument:"세컨드플루트", gradeRole:"차석" }, 
+    { name:"김아진", roles:["all"], instrument:"퍼스트플루트", gradeRole:"차석" }, 
+    { name:"권우진", roles:["chief","all"], instrument:"첼로", gradeRole:"수석" },
+    { name:"김원영", roles:["all"], instrument:"첼로", gradeRole:"차석" },
+    { name:"박현하", roles:["chief","all"], instrument:"제2바이올린", gradeRole:"수석" },
+    { name:"한명진", roles:["all"], instrument:"제2바이올린", gradeRole:"차석" },
+    { name:"이지현", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원" },
+    { name:"박서진", roles:["all"], instrument:"제1바이올린", gradeRole:"차석" },
+    { name:"박수진", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"황규원", roles:["all"], instrument:"제1바이올린", gradeRole:"전체단원" },
+    { name:"소현진", roles:["conductor"], instrument:"지휘", gradeRole:"제4기 지휘자" },
+    { name:"담당교수님C", roles:["professor"], instrument:"전공교수", gradeRole:"담당교수님, 전공교수" }
+  ],
+
+'3': [
+    { name:"8기 운영진1", roles:["management","all"], instrument:"제1바이올린", gradeRole:"운영진, 제8기" },
+    { name:"8기 전체1", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원, 제8기" },
+    { name:"8기 수석1", roles:["chief","all"], instrument:"비올라", gradeRole:"수석, 제8기" },
+    { name:"8기 지휘자", roles:["conductor"], instrument:"지휘", gradeRole:"객원 지휘자, 제8기" },
+    { name:"담당교수님A", roles:["professor"], instrument:"전공교수", gradeRole:"담당교수님, 전공교수" },
+    { name:"8기 전체2", roles:["all"], instrument:"첼로", gradeRole:"전체단원, 제8기" },
+    { name:"8기 전체3", roles:["all"], instrument:"플루트", gradeRole:"전체단원, 제8기" }
+  ],
+  '2': [
+    { name:"8기 운영진1", roles:["management","all"], instrument:"제1바이올린", gradeRole:"운영진, 제8기" },
+    { name:"8기 전체1", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원, 제8기" },
+    { name:"8기 수석1", roles:["chief","all"], instrument:"비올라", gradeRole:"수석, 제8기" },
+    { name:"8기 지휘자", roles:["conductor"], instrument:"지휘", gradeRole:"객원 지휘자, 제8기" },
+    { name:"담당교수님A", roles:["professor"], instrument:"전공교수", gradeRole:"담당교수님, 전공교수" },
+    { name:"8기 전체2", roles:["all"], instrument:"첼로", gradeRole:"전체단원, 제8기" },
+    { name:"8기 전체3", roles:["all"], instrument:"플루트", gradeRole:"전체단원, 제8기" }
+  ],
+  '1': [
+    { name:"8기 운영진1", roles:["management","all"], instrument:"제1바이올린", gradeRole:"운영진, 제8기" },
+    { name:"8기 전체1", roles:["all"], instrument:"제2바이올린", gradeRole:"전체단원, 제8기" },
+    { name:"8기 수석1", roles:["chief","all"], instrument:"비올라", gradeRole:"수석, 제8기" },
+    { name:"8기 지휘자", roles:["conductor"], instrument:"지휘", gradeRole:"객원 지휘자, 제8기" },
+    { name:"담당교수님A", roles:["professor"], instrument:"전공교수", gradeRole:"담당교수님, 전공교수" },
+    { name:"8기 전체2", roles:["all"], instrument:"첼로", gradeRole:"전체단원, 제8기" },
+    { name:"8기 전체3", roles:["all"], instrument:"플루트", gradeRole:"전체단원, 제8기" }
+  ],
+};
+
+const generationSelect = document.getElementById('generation-select');
+const instrumentSelect = document.getElementById('instrument-select'); 
+const memberList = document.getElementById('member-list');
+const tabButtons = document.querySelectorAll('.tab-button');
+
+let currentGeneration = "";
+let currentRole = 'all';
+let currentInstrument = 'all';
+
+function createMemberCard(member){
+  const card = document.createElement('div');
+  card.className = 'image-card';
+  card.innerHTML = `<h3>${member.name}</h3><p class="grade-role">${member.gradeRole}</p><div class="instrument">${member.instrument}</div>`;
+  return card;
+}
+
+function populateInstrumentSelectByGeneration(generation){
+  instrumentSelect.innerHTML = '<option value="all" selected>전체 악기</option>';
+  if(!generation || !memberData[generation]) return;
+  const instruments = new Set(memberData[generation].map(m=>m.instrument));
+  Array.from(instruments).sort().forEach(inst=>{
+    const option = document.createElement('option');
+    option.value = inst;
+    option.textContent = inst;
+    instrumentSelect.appendChild(option);
+  });
+}
+
+function getRoleName(role){
+  switch(role){
+    case 'all': return '전체단원';
+    case 'management': return '운영진';
+    case 'chief': return '수석진';
+    case 'conductor': return '지휘자';
+    case 'professor': return '담당교수님';
+    default: return '';
+  }
+}
+
+function renderMembers(){
+  memberList.innerHTML = '';
+  if(!currentGeneration){
+    memberList.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#aaa;padding:50px 0;">기수를 선택하여 단원 명단을 확인해 주세요.</p>`;
+    return;
+  }
+  let filtered = memberData[currentGeneration] || [];
+  if(currentRole!=='all') filtered = filtered.filter(m=>m.roles.includes(currentRole));
+  if(currentInstrument!=='all') filtered = filtered.filter(m=>m.instrument===currentInstrument);
+  if(filtered.length>0){
+    filtered.forEach(m=>memberList.appendChild(createMemberCard(m)));
+  } else{
+    const instrText = currentInstrument==='all'?'':` (${currentInstrument})`;
+    memberList.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#aaa;padding:50px 0;">${currentGeneration}기 ${getRoleName(currentRole)}${instrText} 정보가 없습니다.</p>`;
+  }
+}
+
+// 이벤트
+generationSelect.addEventListener('change', e=>{
+  currentGeneration = e.target.value;
+  currentInstrument = 'all';
+  populateInstrumentSelectByGeneration(currentGeneration);
+  renderMembers();
+});
+
+instrumentSelect.addEventListener('change', e=>{
+  currentInstrument = e.target.value;
+  renderMembers();
+});
+
+tabButtons.forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    tabButtons.forEach(b=>b.classList.remove('active'));
+    e.target.classList.add('active');
+    currentRole = e.target.dataset.role;
+    renderMembers();
+  });
+});
+
+// 초기 로드
+window.addEventListener('load', ()=>{
+  populateInstrumentSelectByGeneration(currentGeneration);
+  renderMembers();
+});
+</script>

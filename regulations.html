@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>회칙 - CRYSTAL</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://kit.fontawesome.com/3d9d8b9e6e.js" crossorigin="anonymous"></script>
+
+    <style>
+/* 폰트 정의 */
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2'); font-weight: 100; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2'); font-weight: 200; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2'); font-weight: 300; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap;}
+@font-face { font-family: 'Pretendard'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2'); font-weight: 900; font-display: swap;}
+
+/* 전체 스타일 */
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Pretendard', sans-serif;}
+body, html {height: 100%; background-color: #111111; color: white; margin: 0;}
+
+/* 헤더 스타일 */
+header {position: fixed; top:0; left:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding: 20px 50px; background: #111111; color: white; z-index: 1000;}
+header .logo {font-weight: bold; cursor: pointer;}
+nav ul {list-style: none; display: flex; gap: 50px;}
+nav ul li a {color: white; text-decoration: none; font-weight: 500; transition: color 0.3s;}
+nav ul li a:hover {color: #ffffff;}
+
+/* 회칙 페이지 스타일 */
+.rules-page {
+    padding: 120px 20px 80px; 
+    max-width: 900px; /* 긴 텍스트 가독성을 위해 폭 제한을 조금 늘림 */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.rules-page h1 {
+    font-size: 2rem; 
+    text-align: center; 
+    margin-bottom: 30px;
+}
+
+/* 구분선 스타일 */
+.rules-page .divider {
+    width: 50px;
+    height: 3px;
+    background-color: white;
+    margin: 10px auto 40px auto;
+}
+
+/* 회칙 내용 컨테이너 (좌측 정렬로 변경) */
+#rules-content {
+    text-align: left;
+    line-height: 1.8;
+    color: #ccc;
+    padding: 20px, 20px;
+}
+
+/* 회칙 제목 및 단락 스타일 */
+#rules-content .header-meta {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #222;
+}
+
+#rules-content .header-meta p {
+    margin: 3px 0;
+    padding: 0;
+}
+
+#rules-content h2 {
+    font-size: 1.5rem;
+    color: white;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+
+#rules-content h3 {
+    font-size: 1.2rem;
+    color: #eee;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+#rules-content p {
+    margin-bottom: 15px;
+    padding-left: 10px;
+    font-size: 1rem;
+}
+
+#rules-content ul {
+    list-style: none;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+#rules-content li {
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 15px;
+    font-size: 1rem;
+}
+
+#rules-content li::before {
+    content: "•"; /* 리스트 마커 */
+    color: #ffffff; /* 강조색 */
+    position: absolute;
+    left: 0;
+}
+
+
+/* 푸터 스타일 */
+.footer {background-color: #1a1a1a; color: #aaa; padding: 60px 40px; border-top: 1px solid #222; font-size: 0.9rem;}
+.footer-inner {max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;}
+.footer-left {flex: 1 1 300px;}
+.footer-logo {height: 40px; margin-bottom: 15px;}
+.footer-right {text-align: right; flex: 1 1 300px;}
+.footer-right a {color: #ccc; text-decoration: none; transition: color 0.3s;}
+.footer-right a:hover {color: white;}
+.footer-icons {margin-top: 15px;}
+.footer-icons a {color: #ccc; font-size: 1.4rem; margin-left: 15px; transition: color 0.3s;}
+.footer-icons a:hover {color: white;}
+@media (max-width: 768px) {.footer-inner {flex-direction: column; text-align: center; align-items: center;}.footer-right {text-align: center;}.footer-icons a {margin: 0 10px;}}
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo" onclick="location.href='main.html'">
+        <img src="logo.png" alt="CRYSTAL 로고" style="height:40px; cursor:pointer;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="about.html">동아리</a></li>
+            <li><a href="members.html">단원</a></li>
+            <li><a href="performances.html">공연</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="rules-page">
+    <h1>CRYSTAL 동아리 회칙</h1>
+    <div class="divider"></div>
+
+    <div id="rules-content">
+        <div class="header-meta">
+            <p><strong>성신여자대학교 아마추어 오케스트라 동아리 크리스탈(Crystal) 회칙</strong></p>
+            <p>제정일자 2018 년 04 월 04 일</p>
+            <p>공고일자 2023 년 04 월 03 일</p>
+            <p>작성자 임규빈 (독일어문문화 20), 한명진 (융합보안공학 21)</p>
+        </div>
+        
+        <h3>전문</h3>
+        <p style="padding-left: 0;">성신여자대학교 크리스탈(Crystal)은 성신여자대학교 학부생으로 구성된 아마추어 오케스트라 동아리이다.</p>
+        
+        <h2>제 1 장 총칙</h2>
+        
+        <h3>제 1 조 명칭</h3>
+        <p>본 회는 성신여자대학교 아마추어 오케스트라 동아리 크리스탈로 칭하며, 약칭으로 크리스탈(Crystal)이라고 부른다. ‘크리스탈(Crystal)’은 성신여자대학교의 상징 문장(紋章)인 수정(水晶)을 의미하기도 하며, 저마다 다른 빛의 수정이들이 음악을 향한 마음을 모아 하나의 빛을 낸다는 의미를 가지고 있다.</p>
+        
+        <h3>제 2 조 목적</h3>
+        <p>본 회는 클래식뿐만이 아니라 팝, 영화 삽입곡 등 다양한 음악을 연주함으로써 크리스탈 회원과 관람객의 정서를 함양하고, 회원 간 교류로 단합력을 길러 대학과 지역 문화 발전에 기여함을 목적으로 한다.</p>
+        
+        <h3>제 3 조 소재(所在)</h3>
+        <ul>
+            <li>(1 항) 본 회는 성신여자대학교 돈암수정캠퍼스에 둔다.</li>
+            <li>(2 항) 본 회는 성신여자대학교 (이하 본교) 학생단체 중 공연분과 동아리에 속한 정동아리이다. 2018 년도에 설립되었으며, 2020 년 본교 정동아리로 승격되었다.</li>
+        </ul>
+        
+        <h3>제 4 조 활동</h3>
+        <p>본 회는 설립 목적에 준하는 정기·비정기적인 모임과 행사를 한다.</p>
+        
+        <h3>제 5 조 소재지</h3>
+        <h4>1. 동아리방</h4>
+        <ul>
+            <li>(1 항) 본 회의 동아리방은 성신여자대학교 돈암수정캠퍼스 학생회관 331 호에 위치하며, 다른 동아리나 학생 단체와 공유하지 않는다.</li>
+            <li>(2 항) 동아리방 사용 목적으로는 운영위원회 회의, 연습 등 동아리 모임 및 행사가 우선시되며 회원 또는 비회원의 지극히 사적인 용도로 쓰일 수 없다.</li>
+        </ul>
+        <h4>2. 정기연습실</h4>
+        <p>정기연습은 성신여자대학교 돈암수정캠퍼스 수정관 415 호, 430 호에서 진행되며, 사정에 따라 장소가 변동될 수 있다.</p>
+        
+        <h2>제 2 장 회원</h2>
+        
+        <h3>제 6 조 (구성)</h3>
+        <p>본 회의 회원은 정회원과 명예회원으로 구성된다.</p>
+        
+        <h3>제 7 조 (자격)</h3>
+        <ul>
+            <li>(1 항) 정회원은 성신여자대학교 재학생 또는 휴학생에 해당하며 가입 시점 기준으로 해당 악기 전공생이 아니고, 본 회의 목적에 뜻이 있으며 이에 기여할 수 있는 자로 함을 원칙으로 한다.</li>
+            <li>(2 항) 정회원은 1 회의 정기연주회를 마친 시점에 갱신되며, 이를 한 기수로 칭한다.</li>
+            <li>(3 항) 신입 회원은 공식적이며 공개적인 공고와 면접을 통하여 모집해야 한다. 합불 여부는 운영위원회의 ½ 이상 출석한 회의에서 ⅔ 이상이 동의한 결과에 따른다.</li>
+            <li>(4 항) 본 회의 정회원으로 한 기수 이상 활동했던 자가 같은 악기로 신입 회원 모집에 지원할 경우, 운영위원회의 판단에 따라 면접 등의 모집 과정을 생략하도록 의결할 수 있다.</li>
+            <li>(5 항) 명예회원은 본 회의 정회원으로 한 기수 이상 활동했으며 본 회의 발전에 기여한 바가 크다고 판단되어 본 회의 운영위원회가 추천하고 의결한 자로 함을 원칙으로 한다.</li>
+        </ul>
+        
+        <h3>제 8 조 (권리)</h3>
+        <ul>
+            <li>(1 항) 본 회의 모든 회원은 본 회의 정기·비정기적 모임 및 행사에 참석할 권리가 있다.</li>
+            <li>(2 항) 본 회의 모든 정회원은 성신여자대학교 동아리연합선거와 본 회 내 선거에서 선거권 및 피선거권을 갖는다.</li>
+        </ul>
+        
+        <h3>제 9 조 (의무)</h3>
+        <ul>
+            <li>(1 항) 모든 회원은 본 회의 회칙을 준수할 의무를 갖는다.</li>
+            <li>(2 항) 정회원은 본 회의 목적인 정기연주회에 참여할 의무를 갖는다.</li>
+            <li>(3 항) 정회원은 본 회에 입단한 시점부터 정기연주회 전까지의 정기연습 중 ½ 이상 참여할 의무를 가진다. 이 중 ⅓ 미만으로 참여한 회원에게는 경고 조치, ½ 미만으로 참여한 회원에게는 수료증 미발급을 원칙으로 한다.</li>
+            <li>(4 항) 정회원은 본 회의 정기·비정기적 모임 및 행사에 참여·협조할 의무를 갖는다.</li>
+            <li>(5 항) 정회원은 본 회의 운영에 필요한 재정 납부의 의무를 갖는다.</li>
+        </ul>
+        
+        <h3>제 10 조 (자격 상실)</h3>
+        <ul>
+            <li>(1 항) 정당한 사유 없이 본 회의 목적이나 회칙에 위배되는 행동을 하거나 제 2 장 9 조의 의무를 다하지 못한 경우 운영위원회의 판단에 따라 해당 회원을 징계 또는 제명할 수 있다. 단, 회원을 제명하기 위해서는 운영위원 ⅔ 이상의 출석과 출석 인원 전원의 찬성이 있어야 한다.</li>
+            <li>(2 항) 회원은 본 회에서 자유롭게 탈퇴할 수 있으며, 운영위원회에 탈퇴신청서를 제출한 후 탈퇴가 확정되어 회원 자격을 상실한다.</li>
+            <li>(3 항) 회원 자격을 상실한 후에는 본 회에서 활동할 수 없으며, 이미 납부한 활동비는 반환되지 않는 것을 원칙으로 한다.</li>
+        </ul>
+        
+        <h2>제 3 장 운영위원회</h2>
+        
+        <h3>1 절 회장</h3>
+        
+        <h3>제 11 조 (직무)</h3>
+        <p>대내외적으로 본 회를 대표하며 본 회의 모든 모임 및 행사를 총괄한다.</p>
+        
+        <h3>제 12 조 (자격)</h3>
+        <p>회장은 한 기수 이상 활동한 본 회 정회원 중 본 회의 발전을 위해 노력할 자로 함을 원칙으로 하며, 신 기수 회장은 기존 회원의 추천을 받은 자로 기존 운영위원 ⅔ 의 출석과 출석인원 ⅔ 의 찬성으로 선출한다</p>
+        
+        <h3>제 13 조 (임기)</h3>
+        <ul>
+            <li>(1 항) 회장의 임기는 회장으로 선임된 시점부터 다음 운영위원의 인수인계 종료 시점까지로 한다.</li>
+            <li>(2 항) 회장직과 부회장직은 합하여 2 회까지 수행할 수 있다.</li>
+        </ul>
+        
+        <h3>제 14 조 (권리)</h3>
+        <ul>
+            <li>(1 항) 본 회의 모든 운영과 모임 및 행사에 대한 중요 및 세부 사항을 결정할 권리를 가진다.</li>
+            <li>(2 항) 운영위원을 선임해 운영위원회를 구성할 권리를 가진다.</li>
+            <li>(3 항) 타 회원이 추천한 후보나 자원자가 없을 경우 다음 기수 회장 및 운영위원을 선출할 권리를 가진다.</li>
+            <li>(4 항) 본 회의 정기연주회를 위해 지휘자를 모집하고 선임할 권리를 가진다.</li>
+        </ul>
+        
+        <h3>제 15 조 (의무)</h3>
+        <ul>
+            <li>(1 항) 본 회의 목적 달성과 발전, 회원들의 이익을 위해 노력을 아끼지 말아야 한다.</li>
+            <li>(2 항) 본 회의 업무를 수행하며 중요한 사항들을 문서로 기록·보관해야 한다.</li>
+            <li>(3 항) 회장은 연습시간 및 연주곡 등 세부 사항을 회원들에게 공지해야 한다.</li>
+        </ul>
+        
+        <h3>제 16 조 (자격상실)</h3>
+        <ul>
+            <li>(1 항) 회장이 본 회의 목적과 발전에 반하는 행위를 한 경우 또는 제 3 장 15 조의 의무를 다하지 않은 경우, 재적 회원 과반수의 발의와 회장을 제외한 운영위원 전원의 합의로 파면될 수 있다.</li>
+            <li>(2 항) 회장이 파면되어 공석일 경우 부회장이 회장의 권한과 의무를 가진다.</li>
+            <li>(3 항) 사퇴하고자 하는 회장은 사퇴 의사를 밝힌 후 운영위원회의 의결을 통해 사임이 결정된다. 사퇴할 경우 회장으로서의 모든 권리는 박탈된다. 이후 정회원으로의 활동 여부는 운영위원회의 의결을 따른다.</li>
+        </ul>
+        
+        <h3>2 절 운영위원회</h3>
+        
+        <h3>제 17 조 (구성)</h3>
+        <p>운영위원회는 회장, 부회장, 회계, 악보계, 대외협력, 홍보, 악장으로 구성된다.</p>
+        
+        <h3>제 18 조 직무</h3>
+        <ol style="list-style-type: decimal; padding-left: 30px;">
+            <li>부회장: 출석 등 본 회의 회원 관리를 담당한다. 본 회의 모임 및 행사를 준비함에 있어 회장을 보좌한다. 회장의 부재시 회장의 권한과 의무를 가진다.</li>
+            <li>회계: 본 회의 재정 관리를 담당한다. 정기적으로 회원들에게 회계내역을 보고한다.</li>
+            <li>악보계: 본 회의 공식연주회 등의 연주활동과 관련된 악보 확보 및 보관을 담당한다.</li>
+            <li>대외협력: 본 회의 외·내부 협력 및 소통을 담당한다. 악기 및 장소 대여를 담당한다.</li>
+            <li>홍보: 본 회의 대·내외적 홍보를 담당한다. 회원 모집공고, 연주회 등의 홍보를 맡아 진행한다.</li>
+            <li>악장: 본 회의 정기연주회를 포함한 연주 활동에서 음악적인 부분을 담당한다. 회원들에게 연습 내용과 일정을 공지한다. 연주회의 연주와 연습을 총괄한다.</li>
+        </ol>
+        
+        <h3>제 19 조 (자격)</h3>
+        <ul>
+            <li>(1 항) 한 학기 이상 활동한 정회원 중 해당 기수 회장이 선임한 자를 원칙으로 한다.</li>
+            <li>(2 항) 회장, 부회장, 악장을 제외한 직무는 본 회 해당 기수의 운영 방향에 따라 가감될 수 있다.</li>
+            <li>(3 항) 회장, 부회장, 악장은 겸직할 수 없다.</li>
+        </ul>
+        
+        <h3>제 20 조 (임기)</h3>
+        <ul>
+            <li>(1 항) 운영위원의 임기는 회장이 임명한 시점부터 회장의 임기가 종료되는 시점까지로 한다.</li>
+            <li>(2 항) 회장과 부회장을 제외한 운영위원은 연임 및 재임에 제한을 두지 않는다.</li>
+        </ul>
+        
+        <h3>제 21 조 (권리)</h3>
+        <p>운영위원은 맡은 직무의 능률과 활동을 극대화하기 위하여 필요시 해당 직무 부장으로서 해당 직무 부서를 조직해 부원 및 차장을 모집하고 선임할 수 있다. 조직된 부서는 운영위원회 산하 기구로 한다.</p>
+        
+        <h3>제 22 조 (의무)</h3>
+        <ul>
+            <li>(1 항) 본 회와 본 회의 회원들의 발전과 이익을 위한 활동만을 해야 한다.</li>
+            <li>(2 항) 본 회의 원활한 운영과 소통을 위해 정기적인 회의를 진행하고, 회의록을 작성해 보관해야 한다.</li>
+            <li>(3 항) 본 회의 원활한 운영을 위해 다음 담당자에게 직무를 성실하게 인수인계해야 한다. 인수인계는 당사자 간 직접 시행하는 것을 원칙으로 한다. 단, 불가피한 경우 문서로 전달하는 것으로 대체할 수 있다.</li>
+        </ul>
+        
+        <h3>제 23 조 (자격상실)</h3>
+        <ul>
+            <li>(1 항) 제 3 장 2 절 22 조의 의무를 다하지 못했을 경우 또는 운영위원회 판단 시 활동이 부진한 위원을 징계, 파면시킬 수 있다. 운영위원을 징계 및 파면하기 위해서는 해당 위원을 제외한 운영위원 ⅔ 이상의 출석과 출석 인원 전원의 찬성이 있어야 한다. 파면된 위원은 정회원으로 활동을 지속할 수 있다.</li>
+            <li>(2 항) 정회원의 ½ 이상 또는 운영위원의 ½ 이상의 동의가 있을 경우 비상 총회를 열어 징계 및 파면 여부를 결정할 수 있다.</li>
+            <li>(3 항) 파면된 운영위원은 다음 운영위원을 결정하거나 추천할 수 있는 권한을 박탈당한다.</li>
+            <li>(4 항) 사퇴하고자 하는 운영위원은 운영위원회에 사퇴 의사를 밝힌 후 사퇴할 수 있으며, 이후 정회원으로 활동할 수 있다.</li>
+        </ul>
+        
+        <h3>3 절 운영위원회 산하 기구</h3>
+        
+        <h3>제 24 조 (구성)</h3>
+        <p>부장과 부원으로 구성되며, 부장이 필요에 따라 차장을 선임할 수 있다.</p>
+        
+        <h3>제 25 조 (자격)</h3>
+        <ul>
+            <li>(1 항) 부장은 본 회에서 1 학기 이상 활동한 정회원 중 회장이 선임한다.</li>
+            <li>(2 항) 부원은 해당 부서의 부장이 정회원 중 선임하는 것을 원칙으로 하며, 선임 과정에서 별도의 의결은 필요 없으나 운영위원회 ½ 이상의 반대가 있을 경우 해당 회원을 선임할 수 없다.</li>
+            <li>(3 항) 단, 운영위원이 아닌 부원이 의결한 표는 일반 정회원의 표로 집계한다.</li>
+        </ul>
+        
+        <h3>제 26 조 (임기)</h3>
+        <p>부서 조직 목적에 따라 적절하게 운영된다. 단, 해당 기수 운영위원회의 임기보다 길 수 없다.</p>
+        
+        <h3>제 27 조 (의무)</h3>
+        <ul>
+            <li>(1 항) 해당 부서의 조직 목적에 맞는 활동만을 해야 한다.</li>
+            <li>(2 항) 본 회의 목적에 부합하며 본 회와 회원들의 발전을 위한 활동만을 해야 한다.</li>
+            <li>(3 항) 부장의 요구에 따라 해당 부서의 조직 목적에 맞는 행동만을 해야 한다.</li>
+        </ul>
+        
+        <h3>제 28 조 (자격상실)</h3>
+        <ul>
+            <li>(1 항) 본 회의 목적에 위배되거나 반하는 행위를 했을 경우, 21 조의 의무를 다하지 못했을 경우 또는 운영위원회 판단 시 활동이 부진한 부원은 징계 또는 파면시킬 수 있다. 운영위원회의 의결에 따라 파면 후 정회원으로 활동할 수 있다.</li>
+            <li>(2 항) 사퇴를 희망하는 부원은 부장 및 운영위원회에 의사를 밝힌 후 자유롭게 사퇴할 수 있다.</li>
+        </ul>
+
+        <h3>4 절 수석진</h3>
+        
+        <h3>제 30 조 (구성)</h3>
+        <p>수석진은 악장과 각 악기 파트의 수석으로 구성된다.</p>
+        
+        <h3>제 31 조 (자격)</h3>
+        <p>각 악기 수석은 전임 수석의 추천을 받아 회장이 정한다.</p>
+        
+        <h3>제 32 조 (직무)</h3>
+        <ul>
+            <li>(1 항) 수석진은 악장을 부장으로 하는 운영위원회 산하 부서인 것으로 한다.</li>
+            <li>(2 항) 수석진은 각 악기 파트의 연주와 연습을 총괄한다.</li>
+            <li>(3 항) 정기적이거나 비정기적인 회의를 진행하며 정기연주회 및 연주와 연습의 세부 사항을 합의한다. 회의 내용을 기록하고, 악장은 해당 내용을 운영위원회에 보고한다.</li>
+        </ul>
+        
+        <h3>제 33 조 (권리)</h3>
+        <ul>
+            <li>(1 항) 수석은 정회원 중 다음 수석을 추천할 수 있다.</li>
+        </ul>
+        
+        <h3>제 34 조 자격상실</h3>
+        <ul>
+            <li>(1 항) 본 회의 목적에 위배되거나 반하는 행위를 했을 경우, 21 조의 의무를 다하지 못했을 경우 또는 운영위원회 판단 하에 징계 또는 파면시킬 수 있다. 운영위원회의 의결에 따라 파면 후 일반 정회원으로 활동할 수 있다. 파면된 수석위원에게서는 다음 수석을 추천할 권리가 박탈된다.</li>
+        </ul>
+        
+        <h2>제 4 장 활동</h2>
+        
+        <h3>제 35 조 (정기 연습)</h3>
+        <p>정기 연주회를 위한 정기 연습은 매주 한 번 진행되며, 횟수 및 시간은 행사나 운영 목적 필요에 따라 가감될 수 있다. 일정이 변동될 경우 해당 사항은 정회원 모두에게 고지되어야 한다.</p>
+        
+        <h3>제 36 조 (정기 연주회)</h3>
+        <ul>
+            <li>(1 항) 정기연주회는 연간 1 회 진행한다.</li>
+            <li>(2 항) 연주 곡 선정은 단원들의 의견을 수렴하여 운영위원 회의에서 결정한다.</li>
+            <li>(3 항) 모든 정회원은 정기연주회를 위한 정기 연습에 참여할 의무가 있으며, ⅓ 이하로 참석한 회원의 경우 경고, ½ 이하 참석한 회원의 경우 수료증을 발급받을 수 없음을 원칙으로 한다.</li>
+            <li>(4 항) 정기연주회 음악성 향상을 위해 지휘자와 객원을 모집 및 선임할 수 있다.</li>
+        </ul>
+        
+        <h3>제 37 조 (기타 연주회)</h3>
+        <p>정기연주회 이외에 행사나 본교 축제 등 기타 공식 연주회를 정기적 또는 비정기적으로 개최할 수 있다.</p>
+        
+        <h3>제 38 조 (음악캠프)</h3>
+        <ul>
+            <li>(1 항) 정기연주회의 준비를 위하여 활동 기간 중 음악캠프를 진행한다.</li>
+            <li>(2 항) 음악캠프 시기는 운영위원 회의를 통해 단원들의 일정을 고려해 결정된다.</li>
+            <li>(3 항) 음악캠프는 모든 정회원의 참가를 원칙으로 한다.</li>
+            <li>(4 항) 음악캠프 운영상 추가 재정이 필요할 경우 운영위원회의 의결을 거쳐 회비를 징수할 수 있다.</li>
+        </ul>
+        
+        <h3>제 39 조 (출결)</h3>
+        <ul>
+            <li>(1 항) 정회원은 상반기와 하반기 정기연습에 각각 한 번씩의 공식결석을 사용할 수 있다. 반기(半期)는 8 월을 기준으로 나눈다. 공식결석 횟수는 타인에게 양도 불가하다. 단, 상반기에 공식결석을 사용하지 않은 경우 하반기로 이월해 사용할 수 있다.</li>
+            <li>(2 항) 인정 사유에 해당하지 않는 연습 결석 및 지각 시 벌금을 납부해야 한다. 벌금의 금액은 운영위원회의 의결을 통해 정한다. 인정 사유는 병결, 친족 및 본인 경조사, 필수인 학교 일정 참여이다. 구체적인 결석, 지각 인정 여부는 운영위원회에서 결정한다. 모인 벌금은 본 회의 재정으로 사용한다.</li>
+        </ul>
+        
+        <h2>제 5 장 재정</h2>
+        
+        <h3>제 40 조 (재정)</h3>
+        <ul>
+            <li>(1 항) 본 회의 재정은 정회원들의 회비, 벌금, 지원금, 후원금 및 기타 수입으로 한다.</li>
+            <li>(2 항) 본 회의 운영상에 필요한 경우 운영위원회의 의결을 거쳐 추가 징수할 수 있다.</li>
+            <li>(3 항) 본 회의 회원 및 비회원의 지극히 사적인 용도로 사용될 수 없다.</li>
+            <li>(4 항) 회계 담당자는 본 회의 재정 사용 내역을 모든 회원들에게 고지해야 한다.</li>
+        </ul>
+        
+        <h2>제 6 장 총회</h2>
+        
+        <h3>제 41 조 (총회)</h3>
+        <ul>
+            <li>(1 항) 총회는 전체 정회원 ⅔ 이상이 참석한 정기 또는 비정기적 모임을 말한다.</li>
+            <li>(2 항) 정기 또는 임시총회는 회장의 요청 또는 정회원 ¼ 이상의 발의에 의해 개회한다.</li>
+        </ul>
+        
+        <h2>부칙</h2>
+        <ol style="list-style-type: decimal; padding-left: 30px;">
+            <li>본 회칙은 공표와 함께 그 효력이 발생한다.</li>
+            <li>회칙 개정은 운영위원회의 과반수 출석 중 과반수 찬성으로 의결한다.</li>
+            <li>본 회칙에 명시되지 않은 부분은 운영위원회의 의결에 따른다.</li>
+        </ol>
+        
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <img src="logo.png" alt="CRYSTAL 로고" class="footer-logo">
+            <p>CRYSTAL (크리스탈, 성신여자대학교 아마추어 오케스트라 동아리)</p>
+            <p>Copyright © CRYSTAL. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div class="footer-right">
+            <p><a href="regulations.html">CRYSTAL 회칙</a> | <a href="supporters.html">만든사람들</a></p>
+            <div class="footer-icons">
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

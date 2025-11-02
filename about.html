@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRYSTAL 동아리 소개</title>
+  <link rel="stylesheet" href="style.css"> <!-- 공통 CSS 적용 가능 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>성신여자대학교 아마추어 오케스트라 CRYSTAL</title>
+
+  <style>
+
+    .about-text p:first-child {
+  font-size: 1.5rem; /* 첫 문단 크게 */
+  font-weight: 600;  /* 원하면 약간 굵게 */
+}
+
+.about-text p:last-child {
+  font-size: 1rem;       /* 글씨 작게 */
+  line-height: 2;         /* 줄간격 확대 (기본보다 넓게) */
+  color: #ccc;            /* 약간 연하게 */
+  margin-top: 15px;       /* 위쪽 여백도 약간 추가 */
+}
+
+    @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+* {margin:0; padding:0; box-sizing:border-box; font-family: 'Pretendard', sans-serif;}
+    body, html {
+      height: 100%;
+      background-color: #111111;
+      color: white;
+      margin: 0;
+    }
+
+header {
+  position: fixed;
+  top:0; left:0; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 20px 50px;
+  background: transparent; /* 투명으로 변경 */
+  color: white;
+  z-index: 1000;
+}
+
+    header .logo {
+      font-weight: bold;
+      cursor: pointer;
+    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 50px; /* 기존 30px -> 50px로 확대 */
+}
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #f0c040;
+    }
+
+    .main-section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: white;
+      background-image: url('main.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+      padding-top: 100px;
+    }
+    .main-section h1 {
+      font-size: 2rem;
+      margin: 10px 0;
+    }
+    .main-section p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .main-section button {
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: 2px solid white;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 6px;
+    }
+    .main-section button:hover {
+      background: white;
+      color: black;
+    }
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      font-size: 2rem;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% {transform: translateY(0);}
+      50% {transform: translateY(10px);}
+    }
+
+    .about {
+      padding: 80px 20px;
+      text-align: center;
+      background-color: #111111;
+    }
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      line-height: 1.6;
+    }
+    .about-stats {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .stat h2 {font-size: 2rem; margin-bottom: 5px;}
+    .stat p {font-size: 1rem;}
+
+    .activity {
+      text-align: center;
+      padding: 80px 20px;
+      background-color: #111111;
+    }
+    .select-container {margin: 20px auto;}
+    select {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+    }
+    .photo-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      background-color: #ccc;
+    }
+.orchestra {
+  background-color: #111111;
+  text-align: center;
+  padding: 80px 20px;
+}
+    .orchestra h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .orchestra .subtitle {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 40px;
+    }
+    .chart-container {
+      display: flex;
+      justify-content: center;
+    }
+.chart-container img {
+  max-width: 900px;
+  width: 90%;
+  border-radius: 0; /* 필요하면 유지 가능 */
+  background: none; /* 배경 제거 */
+  padding: 0; /* 여백 제거 */
+  border: none; /* 혹시 있을 기본 테두리 제거 */
+}
+
+    /* ===== 후원 섹션 ===== */
+    .support {
+      background-color: #111111;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 120px;
+      border-top: 1px solid #222;
+    }
+    .support h3 {
+      color: #aaa;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+    .support p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .support strong {
+      font-size: 1.2rem;
+      display: block;
+      margin: 20px 0;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .social-links a {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #222;
+      border-radius: 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .social-links a:hover {
+      background-color: #444;
+    }
+    .social-links i {
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width:768px){
+      .photo-grid {grid-template-columns:1fr;}
+      .social-links a {width:70px; height:70px; font-size:0.8rem;}
+      .social-links i {font-size:1.5rem;}
+    }
+
+    /* ==== 푸터 ==== */
+.footer {
+  background-color: #1a1a1a;
+  color: #aaa;
+  padding: 60px 40px;
+  border-top: 1px solid #222;
+  font-size: 0.9rem;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.footer-left {
+  flex: 1 1 300px;
+}
+.footer-logo {
+  height: 40px;
+  margin-bottom: 15px;
+}
+.footer-right {
+  text-align: right;
+  flex: 1 1 300px;
+}
+.footer-right a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-right a:hover {
+  color: white;
+}
+.footer-icons {
+  margin-top: 15px;
+}
+.footer-icons a {
+  color: #ccc;
+  font-size: 1.4rem;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+.footer-icons a:hover {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .footer-right {
+    text-align: center;
+  }
+  .footer-icons a {
+    margin: 0 10px;
+  }
+}
+
+  </style>
+
+  <!-- 아이콘 (Font Awesome) -->
+  <script src="https://kit.fontawesome.com/3d9d8b9e6e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- ====== HEADER ====== -->
+  <header>
+    <div class="logo" onclick="location.href='main.html'">
+      <img src="logo.png" alt="CRYSTAL 로고" style="height:40px; cursor:pointer;">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="about.html">동아리</a></li>
+        <li><a href="members.html">단원</a></li>
+        <li><a href="performances.html">공연</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ====== ABOUT CONTENT ====== -->
+  <section class="about" style="padding-top:120px; text-align:center; background-color:#111;">
+    <div class="about-text" style="max-width:900px; margin:0 auto; color:white;">
+      <h1 style="font-size:2rem; margin-bottom:20px;">인삿말</h1>
+      <p style="font-size:1rem; line-height:1.8; color:#ccc;">
+        2018년 3월에 설립된 「크리스탈」은 성신여자대학교 소속 정동아리로 공연분과에 속해 있는 오케스트라 동아리입니다. <br>
+        <br>
+        동아리 회원들은 전원 비전공자들로 아마추어 오케스트라입니다. <br>
+        동아리 명인 「크리스탈(Crystral)」은 성신여자대학교의 상징 문장인 수정을 의미하는 한편, <br>
+        저마다 다른 빛을 가진 수정이 하나의 찬란한 빛을 만들어내듯이 음악을 향한 마음을 모아 <br>
+        수정의 빛처럼 멋진 화음을 만들어낸다는 뜻을 갖고 있습니다. <br>
+        <br>
+        바이올린, 비올라, 첼로, 플루트, 클라리넷, 트럼본 등 다양한 악기들로 구성된  오케스트라 ‘크리스탈’은<br>
+        매주 1회 정기연습을 통해 실력을 키워나가고 있습니다. <br>
+        이와 함께 매년 1회 정기연주회를 비롯해 음악캠프 등 다양한 활동을 하고 있습니다.<br>
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== HISTORY / 연혁 ====== -->
+<section class="history" style="padding:80px 20px; background-color:#111; text-align:center; color:white;">
+  <h2 style="font-size:2rem; margin-bottom:50px;">연혁</h2>
+  
+  <div class="timeline" style="position:relative; max-width:1000px; margin:0 auto;">
+    
+    <!-- 연혁 항목 -->
+    <div class="timeline-item" style="position:relative; margin-bottom:50px;">
+      <img src="line.png" alt="라인" style="width:100%; height:auto; position:absolute; top:12px; left:0; z-index:-1;">
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; position:relative;">
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2018년 3월</p>
+          <p>크리스탈 창단</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2018년</p>
+          <p>성신여자대학교 중앙동아리 선정</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2018년 9월</p>
+          <p>제 1회 정기연주회</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2019년 9월</p>
+          <p>제 2회 정기연주회</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2020년</p>
+          <p>교내 정동아리 선정</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item" style="position:relative; margin-bottom:50px;">
+      <img src="line.png" alt="라인" style="width:100%; height:auto; position:absolute; top:12px; left:0; z-index:-1;">
+      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; position:relative;">
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2022년 1월</p>
+          <p>제 4회 정기연주회</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2022년</p>
+          <p>단독 동아리방 배정</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2023년 1월</p>
+          <p>제 5회 정기연주회</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2023년 3월</p>
+          <p>67기 신입부원 모집</p>
+        </div>
+        <div style="text-align:center; flex:1;">
+          <p style="font-weight:600;">2024년 1월</p>
+          <p>제 6회 정기연주회 예정</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== VISION / 비전과 추구방향 ====== -->
+<section class="vision" style="padding:80px 20px; text-align:center; background-color:#111; color:white;">
+  <h2 style="font-size:2rem; margin-bottom:50px;">비전과 추구방향</h2>
+
+  <div class="vision-circles" style="display:flex; justify-content:center; gap:50px; flex-wrap:wrap; margin-bottom:40px;">
+    <div style="width:150px; height:150px; background:#333; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:1rem;">내용추가</div>
+    <div style="width:150px; height:150px; background:#333; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:1rem;">내용추가</div>
+    <div style="width:150px; height:150px; background:#333; border-radius:50%; display:flex; justify-content:center; align-items:center; font-size:1rem;">내용추가</div>
+  </div>
+
+  <p style="max-width:900px; margin:0 auto; line-height:1.8; color:#ccc;">
+    클래식뿐만 아니라 팝, 영화 삽입곡 등 다양한 음악을 연주함으로써 크리스탈 회원과 관람객의 정서를 함양하고 <br>
+    회원 간 교류로 단합력을 길러 대학과 지역 문화 발전에 기여하고자 합니다.
+  </p>
+</section>
+<!-- ====== LOGO EXPLAIN SECTION ====== -->
+<section class="logo-explain" style="padding:80px 20px; text-align:center; background-color:#111; color:white;">
+      <h2 style="font-size:2rem; margin-bottom:50px;">로고</h2>
+  <img src="logoExplain.png" alt="CRYSTAL 로고 설명" style="max-width:300px; margin-bottom:30px;">
+  <div class="logo-text" style="max-width:900px; margin:0 auto; line-height:1.8; color:#ccc; text-align:center;">
+    <p>크리스탈 오케스트라의 비전을 직관적으로 나타내기 위해</p>
+    <p>'다시 한번 연주함'이라는 의미를 가진 음악 기호와 크리스탈 모양을 기하학적으로 바꿔 배치하였습니다.</p>
+    <p>이는 <strong>끊임없이 음악을 연주해나가고 앞으로 나아갈 크리스탈</strong>을 의미합니다.</p>
+  </div>
+</section>
+
+
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="logo.png" alt="CRYSTAL 로고" class="footer-logo">
+        <p>CRYSTAL (크리스탈, 성신여자대학교 아마추어 오케스트라 동아리)</p>
+        <p>Copyright © CRYSTAL. ALL RIGHTS RESERVED.</p>
+      </div>
+
+      <div class="footer-right">
+        <p><a href="regulations.html">CRYSTAL 회칙</a> | <a href="supporters.html">만든사람들</a></p>
+        <div class="footer-icons">
+          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
