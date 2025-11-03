@@ -199,19 +199,20 @@ nav ul {
       border-radius: 5px;
     }
 
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 900px;
-      margin: 40px auto 0 auto;
-    }
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 반응형 그리드 */
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+}
     .photo-grid img {
       width: 100%;
       height: 200px;
       object-fit: cover;
       border-radius: 15px;
       background-color: #ccc;
+      margin-bottom: 10px;
     }
 .orchestra {
   background-color: #111111;
@@ -310,10 +311,16 @@ nav ul {
         font-size: 0.9rem; /* 글씨 크기 축소 */
     }
 
-    /* 기존 스타일 유지 */
-    .photo-grid {grid-template-columns:1fr;}
-    .social-links a {width:70px; height:70px; font-size:0.8rem;}
-    .social-links i {font-size:1.5rem;}
+.photo-grid {
+        grid-template-columns: 1fr !important; /* 모바일에서 한 줄에 하나만 표시 (필요시) */
+        gap: 15px; /* 모바일 간격 조정 */
+    }
+    .photo-item img {
+        height: 180px; /* 모바일에서 이미지 높이 조금 줄이기 */
+    }
+    .photo-caption {
+        font-size: 0.8rem; /* 모바일에서 캡션 글씨 크기 더 작게 */
+    }
 }
 
     /* ==== 푸터 ==== */
@@ -538,7 +545,7 @@ nav ul {
       '크리스탈' 은 성신여자대학교의 엠블럼인 '수정'을 뜻하며,<br>
       저마다 다른 빛깔을 지닌 학생들이 음악을 향한 마음을 모아 하나의 소리를 낸다는 의미를 담고 있습니다.<br>
       다양한 전공의 학생들이 오케스트라를 통해 하나 되어 아름다운 음악을 만들어나가고 화합하고자 합니다.<br>
-      그 과정에서 '하나팀'을 깨닫고 함께이기에 더 즐거운 시간들을 보내길 바라면서 설립하게 되었습니다.
+      그 과정에서 '하나됨'을 깨닫고 함께이기에 더 즐거운 시간들을 보내길 바라면서 설립하게 되었습니다.
     </p>
   </div>
 
@@ -555,7 +562,9 @@ nav ul {
   
     <div class="controls" style="justify-content: center; margin: 20px auto;">
     <select id="generationSelect" onchange="changeGeneration()">
-    <option value="8" selected>8기</option>       <option value="7">7기</option>
+  <option value="" selected>기수를 선택해 주세요</option>
+    <option value="8" >8기</option>       
+    <option value="7">7기</option>
       <option value="6">6기</option>
       <option value="5">5기</option>
       <option value="4">4기</option>
@@ -610,15 +619,24 @@ function handleApplyClick() {
 }
 
 // 세대별 사진 데이터
+// 세대별 사진 데이터
 const generationPhotos = {
-    1: ["images/1_1.jpg", "images/1_2.jpg", "images/1_3.jpg"],
-    2: ["images/2_1.jpg", "images/2_2.jpg", "images/2_3.jpg"],
-    3: ["images/3_1.jpg", "images/3_2.jpg", "images/3_3.jpg"],
-    4: ["images/4_1.jpg", "images/4_2.jpg", "images/4_3.jpg"],
-    5: ["images/5_1.jpg", "images/5_2.jpg", "images/5_3.jpg"],
-    6: ["images/6_1.jpg", "images/6_2.jpg", "images/6_3.jpg"],
-    7: ["images/7_1.jpg", "images/7_2.jpg", "images/7_3.jpg"],
-    8: ["images/8_1.jpg", "images/8_2.jpg", "images/8_3.jpg"]
+    6: [
+        { src: "images/6_1.jpg", caption: "인생네컷 프레임 제작" },
+        { src: "images/6_2.jpg", caption: "십입단원 모집 삐끼" },
+        { src: "images/6_3.jpg", caption: "음악동아리 합동 공연" }
+    ],
+    7: [
+        { src: "images/7_1.jpg", caption: "7기 엠티" },
+        { src: "images/7_2.jpg", caption: "동아리 박람회" },
+        { src: "images/7_3.jpg", caption: "'따봄' 버스킹" },
+        { src: "images/7_4.jpg", caption: "동아리 박람회" },
+        { src: "images/7_5.jpg", caption: "단체티 제작" }
+    ],
+    8: [
+        { src: "images/8_1.jpg", caption: "8기 엠티" },
+        { src: "images/8_2.jpg", caption: "동아리 홍보" },
+    ]
 };
 
 // 사진 표시 함수
@@ -626,18 +644,28 @@ function renderPhotos(gen) {
     const photoGrid = document.getElementById('photoGrid');
     if (!photoGrid) return;
 
-    photoGrid.innerHTML = '';
+    photoGrid.innerHTML = ''; // 기존 내용 지우기
 
-    if (!gen || !generationPhotos[gen]) {
-        photoGrid.innerHTML = `<p style="grid-column:1/-1; color:#aaa;">사진이 없습니다.</p>`;
+    if (!gen || !generationPhotos[gen] || generationPhotos[gen].length === 0) {
+        photoGrid.innerHTML = `<p style="grid-column:1/-1; color:#aaa; font-size: 0.9rem;">선택된 기수의 활동 사진이 없습니다.</p>`;
         return;
     }
 
-    generationPhotos[gen].forEach(src => {
+    generationPhotos[gen].forEach(photo => { // photo 객체를 순회
+        const photoItem = document.createElement('div');
+        photoItem.className = 'photo-item'; // 새로운 클래스 추가 (아래 CSS에서 사용)
+
         const img = document.createElement('img');
-        img.src = src;
-        img.alt = `${gen}기 활동 사진`;
-        photoGrid.appendChild(img);
+        img.src = photo.src;
+        img.alt = photo.caption; // alt 텍스트도 캡션으로 활용
+
+        const caption = document.createElement('p');
+        caption.className = 'photo-caption'; // 새로운 클래스 추가
+        caption.textContent = photo.caption;
+
+        photoItem.appendChild(img);
+        photoItem.appendChild(caption);
+        photoGrid.appendChild(photoItem);
     });
 }
 
