@@ -15,15 +15,15 @@
   <style>
 
     .about-text p:first-child {
-  font-size: 1.5rem; /* 첫 문단 크게 */
-  font-weight: 600;  /* 원하면 약간 굵게 */
+  font-size: 1.5rem; 
+  font-weight: 600;  
 }
 
 .about-text p:last-child {
-  font-size: 1rem;       /* 글씨 작게 */
-  line-height: 2;         /* 줄간격 확대 (기본보다 넓게) */
-  color: #ccc;            /* 약간 연하게 */
-  margin-top: 15px;       /* 위쪽 여백도 약간 추가 */
+  font-size: 1rem;      
+  line-height: 2;       
+  color: #ccc;        
+  margin-top: 15px;     
 }
 
     @font-face {
@@ -93,7 +93,7 @@ header {
   top:0; left:0; width:100%;
   display:flex; justify-content:space-between; align-items:center;
   padding: 20px 50px;
-  background: transparent; /* 투명으로 변경 */
+  background: transparent; 
   color: white;
   z-index: 1000;
 }
@@ -105,7 +105,7 @@ header {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 50px; /* 기존 30px -> 50px로 확대 */
+  gap: 50px;
 }
     nav ul li a {
       color: white;
@@ -117,6 +117,71 @@ nav ul {
       color: #f0c040;
     }
 
+
+    .about, .history, .vision, .logo-explain {
+        padding: 50px 15px !important; 
+    }
+
+    .about h1 {
+        font-size: 1.5rem !important; 
+        margin-bottom: 10px !important;
+        margin-top: 50px;
+    }
+    .about-text {
+        margin: 0 auto 20px auto !important; 
+        padding: 50px 30px
+    }
+    .about-text p {
+        font-size: 0.7rem !important; 
+        line-height: 1.5 !important;
+    }
+
+
+    .history h2 {
+        font-size: 1.5rem !important; 
+        margin-bottom: 50px !important; 
+    }
+    .timeline-item {
+        margin-bottom: 20px !important;
+    }
+    .timeline p {
+        font-size: 0.6rem; 
+        line-height: 2;
+    }
+    .timeline img {
+        top: 8px !important; 
+    }
+
+
+    .vision h2, .logo-explain h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 25px !important;
+    }
+
+
+    .vision p {
+        font-size: 0.7rem !important;
+        line-height: 1.5 !important;
+    }
+    .vision-circles {
+        gap: 20px !important; 
+        margin-bottom: 20px !important;
+    }
+    .vision-circles div {
+        width: 100px !important; 
+        height: 100px !important;
+        font-size: 0.8rem !important;
+    }
+
+
+    .logo-explain img {
+        max-width: 200px !important; 
+        margin-bottom: 15px !important;
+    }
+    .logo-text p {
+        font-size: 0.7rem !important; 
+        line-height: 1.4 !important;
+    }
     .main-section {
       width: 100%;
       height: 100vh;
@@ -233,10 +298,10 @@ nav ul {
 .chart-container img {
   max-width: 900px;
   width: 90%;
-  border-radius: 0; /* 필요하면 유지 가능 */
-  background: none; /* 배경 제거 */
-  padding: 0; /* 여백 제거 */
-  border: none; /* 혹시 있을 기본 테두리 제거 */
+  border-radius: 0; 
+  background: none; 
+  padding: 0; 
+  border: none; 
 }
 
     /* ===== 후원 섹션 ===== */
@@ -291,13 +356,28 @@ nav ul {
       margin-bottom: 5px;
     }
 
-    @media (max-width:768px){
-      .photo-grid {grid-template-columns:1fr;}
-      .social-links a {width:70px; height:70px; font-size:0.8rem;}
-      .social-links i {font-size:1.5rem;}
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 15px 20px;
+    }
+    
+
+    nav ul {
+        gap: 20px;
+    }
+    nav ul li a {
+        font-size: 0.9rem; 
     }
 
-    /* ==== 푸터 ==== */
+
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+}
+
+
 .footer {
   background-color: #1a1a1a;
   color: #aaa;
@@ -315,7 +395,7 @@ nav ul {
   gap: 40px;
 }
 .footer-left {
-  flex: 1 1 300px;
+  flex: 1 1 100px;
 }
 .footer-logo {
   height: 40px;
@@ -323,7 +403,7 @@ nav ul {
 }
 .footer-right {
   text-align: right;
-  flex: 1 1 300px;
+  flex: 1 1 50px;
 }
 .footer-right a {
   color: #ccc;
@@ -345,20 +425,129 @@ nav ul {
 .footer-icons a:hover {
   color: white;
 }
+@media (min-width: 769px) {
 
-@media (max-width: 768px) {
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  .footer-right {
-    text-align: center;
-  }
-  .footer-icons a {
-    margin: 0 10px;
+    .about, .history, .vision, .logo-explain {
+        padding: 80px 20px !important;
+
+
+    .about h1 {
+        font-size: 2rem !important;
+        margin-top: 0px !important; 
+    }
+    .about-text {
+        padding: 50px 30px; 
+    }
+    .about-text p {
+        font-size: 1rem !important; 
+        line-height: 1.8 !important; 
+    }
+ 
+    .about-text p:first-child {
+        font-size: 1.8rem; /* 첫 문단 1.5rem -> 1.8rem로 확대 */
+    }
+    .about-text p:last-child {
+        font-size: 1.2rem; /* 마지막 문단 1rem -> 1.2rem로 확대 */
+        line-height: 2.2; /* 줄간격 2 -> 2.2로 확대 */
+        margin-top: 25px; /* 위쪽 여백 15px -> 25px로 확대 */
+    }
+    
+    /* 연혁 섹션 */
+    .history h2 {
+        font-size: 2rem !important; /* 제목 1.5rem -> 2rem */
+        margin-bottom: 70px !important; /* 아래 여백 50px -> 70px로 확대 */
+    }
+    .timeline-item {
+        margin-bottom: 40px !important; /* 항목 간격 20px -> 40px로 확대 */
+    }
+    .timeline p {
+        font-size: 1rem; /* 연혁 항목 텍스트 0.6rem -> 1rem */
+        line-height: 2.2; /* 줄 간격 2 -> 2.2로 확대 */
+    }
+    .timeline img {
+        top: 15px !important; /* 라인 위치 8px -> 15px로 조정 (텍스트 크기에 맞춰) */
+    }
+
+    /* 비전 및 로고 섹션 제목 */
+    .vision h2, .logo-explain h2 {
+        font-size: 2rem !important; /* 제목 1.5rem -> 2rem */
+        margin-bottom: 50px !important; /* 아래 여백 25px -> 50px로 확대 */
+    }
+
+    /* 비전 섹션 본문 */
+    .vision p {
+        font-size: 1rem !important; /* 본문 0.7rem -> 1rem */
+        line-height: 1.8 !important; /* 줄 간격 1.5 -> 1.8로 확대 */
+    }
+    .vision-circles {
+        gap: 40px !important; /* 원 간격 20px -> 40px로 확대 */
+        margin-bottom: 40px !important; /* 아래 여백 20px -> 40px로 확대 */
+    }
+    .vision-circles div {
+        width: 140px !important; /* 원 크기 100px -> 140px로 확대 */
+        height: 140px !important;
+        font-size: 1rem !important; /* 폰트 크기 0.8rem -> 1rem로 확대 */
+    }
+
+    /* 로고 설명 섹션 */
+    .logo-explain img {
+        max-width: 250px !important; /* 로고 이미지 200px -> 250px로 확대 */
+        margin-bottom: 30px !important; /* 아래 여백 15px -> 30px로 확대 */
+    }
+    .logo-text p {
+        font-size: 1rem !important; /* 로고 설명 텍스트 0.7rem -> 1rem */
+        line-height: 1.6 !important; /* 줄 간격 1.4 -> 1.6으로 확대 */
+    }
   }
 }
+
+@media (max-width: 768px) {
+    /* (헤더 및 기타 스타일은 유지) */
+    header { padding: 15px 20px; }
+    nav ul { gap: 20px; }
+    nav ul li a { font-size: 0.9rem; }
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+    
+    /* 👇👇 푸터 최소화 최종 버전 👇👇 */
+    .footer {
+        padding: 25px 15px; /* 상하 패딩을 30px -> 25px로 더 축소 */
+        font-size: 0.75rem; /* 글씨 크기를 0.8rem -> 0.75rem로 축소 */
+        line-height: 1.4; /* 줄 간격 압축 */
+    }
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 8px; /* 섹션 간격을 10px -> 8px로 축소 */
+    }
+    .footer-left p {
+        margin: 1px 0; /* 문단 간격을 2px -> 1px로 최소화 */
+    }
+    .footer-logo {
+        height: 20px; /* 로고 크기를 25px -> 20px로 최소화 */
+        margin-bottom: 5px; 
+    }
+    .footer-right {
+        text-align: center;
+        margin-top: 5px; /* 상단 여백 추가 조정 */
+    }
+    .footer-right p {
+        margin: 3px 0; /* 우측 상단 링크 문단 간격 축소 */
+    }
+    .footer-right a {
+        margin: 0 4px; /* 링크 간격 축소 */
+    }
+    .footer-icons {
+        margin-top: 5px;
+    }
+    .footer-icons a {
+        margin: 0 6px; /* 아이콘 좌우 간격 축소 */
+        font-size: 1.1rem; /* 아이콘 크기 축소 */
+    }
+}
+
 
   </style>
 
@@ -369,7 +558,7 @@ nav ul {
 
   <!-- ====== HEADER ====== -->
   <header>
-    <div class="logo" onclick="location.href='main.html'">
+    <div class="logo" onclick="location.href='index.html'">
       <img src="logo.png" alt="CRYSTAL 로고" style="height:40px; cursor:pointer;">
     </div>
     <nav>

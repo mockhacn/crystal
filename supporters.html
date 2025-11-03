@@ -97,8 +97,121 @@ nav ul li a:hover {color: #f0c040;}
 .footer-icons {margin-top: 15px;}
 .footer-icons a {color: #ccc; font-size: 1.4rem; margin-left: 15px; transition: color 0.3s;}
 .footer-icons a:hover {color: white;}
-@media (max-width: 768px) {.footer-inner {flex-direction: column; text-align: center; align-items: center;}.footer-right {text-align: center;}.footer-icons a {margin: 0 10px;}}
-    </style>
+
+@media (max-width: 768px) {
+    /* 헤더 패딩 조정 */
+    header {
+        padding: 15px 20px;
+    }
+    
+    /* 네비게이션 메뉴 (동아리, 단원, 공연) 가로 유지 및 간격 조정 */
+    nav ul {
+        gap: 20px; /* 가로 간격 축소 */
+    }
+    nav ul li a {
+        font-size: 0.9rem; /* 글씨 크기 축소 */
+    }
+
+    /* 기존 스타일 유지 */
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+}
+
+    /* ==== 푸터 ==== */
+.footer {
+  background-color: #1a1a1a;
+  color: #aaa;
+  padding: 60px 40px;
+  border-top: 1px solid #222;
+  font-size: 0.9rem;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.footer-left {
+  flex: 1 1 100px;
+}
+.footer-logo {
+  height: 40px;
+  margin-bottom: 15px;
+}
+.footer-right {
+  text-align: right;
+  flex: 1 1 50px;
+}
+.footer-right a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-right a:hover {
+  color: white;
+}
+.footer-icons {
+  margin-top: 15px;
+}
+.footer-icons a {
+  color: #ccc;
+  font-size: 1.4rem;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+.footer-icons a:hover {
+  color: white;
+}
+@media (max-width: 768px) {
+    /* (헤더 및 기타 스타일은 유지) */
+    header { padding: 15px 20px; }
+    nav ul { gap: 20px; }
+    nav ul li a { font-size: 0.9rem; }
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+    
+    /* 👇👇 푸터 최소화 최종 버전 👇👇 */
+    .footer {
+        padding: 25px 15px; /* 상하 패딩을 30px -> 25px로 더 축소 */
+        font-size: 0.75rem; /* 글씨 크기를 0.8rem -> 0.75rem로 축소 */
+        line-height: 1.4; /* 줄 간격 압축 */
+    }
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 8px; /* 섹션 간격을 10px -> 8px로 축소 */
+    }
+    .footer-left p {
+        margin: 1px 0; /* 문단 간격을 2px -> 1px로 최소화 */
+    }
+    .footer-logo {
+        height: 20px; /* 로고 크기를 25px -> 20px로 최소화 */
+        margin-bottom: 5px; 
+    }
+    .footer-right {
+        text-align: center;
+        margin-top: 5px; /* 상단 여백 추가 조정 */
+    }
+    .footer-right p {
+        margin: 3px 0; /* 우측 상단 링크 문단 간격 축소 */
+    }
+    .footer-right a {
+        margin: 0 4px; /* 링크 간격 축소 */
+    }
+    .footer-icons {
+        margin-top: 5px;
+    }
+    .footer-icons a {
+        margin: 0 6px; /* 아이콘 좌우 간격 축소 */
+        font-size: 1.1rem; /* 아이콘 크기 축소 */
+    }
+}    </style>
 </head>
 <body>
 
@@ -121,32 +234,42 @@ nav ul li a:hover {color: #f0c040;}
         <div class="supporter-card">
             <h3>한명진</h3>
             <p class="info">융합보안공학과 21학번</p>
-            <div class="role">TF</div>
+            <div class="role">TF, 개발, 기획<br>갱신요청 - hanmj0226@gmail.com</div>
+        </div>
+        <div class="supporter-card">
+            <h3>이서현</h3>
+            <p class="info">산업디자인학과 20학번</p>
+            <div class="role">웹디자인</div>
+        </div>
+        <div class="supporter-card">
+            <h3>이수빈</h3>
+            <p class="info">산업디자인학과 20학번</p>
+            <div class="role">웹디자인</div>
+        </div>
+        <div class="supporter-card">
+            <h3>김아진</h3>
+            <p class="info">컴퓨터공학과 21학번</p>
+            <div class="role">개발</div>
         </div>
         <div class="supporter-card">
             <h3>이지현</h3>
-            <p class="info">?</p>
+            <p class="info">산업디자인학과 20학번</p>
             <div class="role">디자인 총괄</div>
         </div>
         <div class="supporter-card">
-            <h3>박선영</h3>
-            <p class="info">미디어커뮤니케이션학과 19학번</p>
-            <div class="role">콘텐츠 기획 및 작성</div>
+            <h3>구도언</h3>
+            <p class="info">AI 융합학부</p>
+            <div class="role">개발</div>
         </div>
         <div class="supporter-card">
-            <h3>최민준</h3>
-            <p class="info">경영학과 22학번</p>
-            <div class="role">사진 및 영상 편집</div>
+            <h3>이준희</h3>
+            <p class="info">컴퓨터공학과 21학번</p>
+            <div class="role">개발</div>
         </div>
         <div class="supporter-card">
-            <h3>홍길동</h3>
-            <p class="info">문헌정보학과 18학번</p>
-            <div class="role">초기 기획 참여</div>
-        </div>
-        <div class="supporter-card">
-            <h3>김철수</h3>
-            <p class="info">심리학과 20학번</p>
-            <div class="role">데이터 관리</div>
+            <h3>박수진</h3>
+            <p class="info">정보시스템공학과 20학번</p>
+            <div class="role">개발</div>
         </div>
     </div>
 </section>

@@ -132,7 +132,7 @@ nav ul {
     }
     .main-section p {
       font-size: 1.2rem;
-      margin-bottom: 20px;
+      margin-bottom: 5px;
     }
     .main-section button {
       padding: 12px 30px;
@@ -150,7 +150,7 @@ nav ul {
     }
     .scroll-down {
       position: absolute;
-      bottom: 30px;
+      bottom: 25px;
       font-size: 2rem;
       cursor: pointer;
       animation: bounce 2s infinite;
@@ -264,32 +264,50 @@ nav ul {
       flex-wrap: wrap;
     }
     .social-links a {
-      width: 80px;
-      height: 80px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: #222;
-      border-radius: 15px;
-      text-decoration: none;
-      color: white;
-      font-size: 0.9rem;
-      transition: background 0.3s;
+  width: 80px;
+  height: 80px; /* 이미지 크기에 맞게 조정, 필요시 더 늘릴 수 있음 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #222;
+  border-radius: 15px;
+  text-decoration: none;
+  color: white; /* 텍스트가 없으므로 사실상 필요 없음 */
+  font-size: 0.9rem; /* 텍스트가 없으므로 사실상 필요 없음 */
+  transition: background 0.3s;
+  overflow: hidden; /* 이미지가 버튼 크기를 넘어가지 않도록 */
+}
+
+.social-links a:hover {
+  background-color: #444;
+}
+.social-links a img {
+  width: 50px; /* 이미지 너비를 50px로 축소 */
+  height: 50px; /* 이미지 높이를 50px로 축소 */
+  object-fit: contain; /* 이미지 비율을 유지하며 중앙에 배치 */
+  border-radius: 0; /* 둥근 모서리 제거 (아이콘이므로) */
+  background: none; /* 배경 제거 */
+}
+@media (max-width: 768px) {
+    /* 헤더 패딩 조정 */
+    header {
+        padding: 15px 20px;
     }
-    .social-links a:hover {
-      background-color: #444;
+    
+    /* 네비게이션 메뉴 (동아리, 단원, 공연) 가로 유지 및 간격 조정 */
+    nav ul {
+        gap: 20px; /* 가로 간격 축소 */
     }
-    .social-links i {
-      font-size: 2rem;
-      margin-bottom: 5px;
+    nav ul li a {
+        font-size: 0.9rem; /* 글씨 크기 축소 */
     }
 
-    @media (max-width:768px){
-      .photo-grid {grid-template-columns:1fr;}
-      .social-links a {width:70px; height:70px; font-size:0.8rem;}
-      .social-links i {font-size:1.5rem;}
-    }
+    /* 기존 스타일 유지 */
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+}
 
     /* ==== 푸터 ==== */
 .footer {
@@ -309,7 +327,7 @@ nav ul {
   gap: 40px;
 }
 .footer-left {
-  flex: 1 1 300px;
+  flex: 1 1 100px;
 }
 .footer-logo {
   height: 40px;
@@ -317,7 +335,7 @@ nav ul {
 }
 .footer-right {
   text-align: right;
-  flex: 1 1 300px;
+  flex: 1 1 50px;
 }
 .footer-right a {
   color: #ccc;
@@ -339,20 +357,122 @@ nav ul {
 .footer-icons a:hover {
   color: white;
 }
-
 @media (max-width: 768px) {
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  .footer-right {
-    text-align: center;
-  }
-  .footer-icons a {
-    margin: 0 10px;
-  }
+    /* (헤더 및 기타 스타일은 유지) */
+    header { padding: 15px 20px; }
+    nav ul { gap: 20px; }
+    nav ul li a { font-size: 0.9rem; }
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+    
+    /* 👇👇 푸터 최소화 최종 버전 👇👇 */
+    .footer {
+        padding: 25px 15px; /* 상하 패딩을 30px -> 25px로 더 축소 */
+        font-size: 0.75rem; /* 글씨 크기를 0.8rem -> 0.75rem로 축소 */
+        line-height: 1.4; /* 줄 간격 압축 */
+    }
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 8px; /* 섹션 간격을 10px -> 8px로 축소 */
+    }
+    .footer-left p {
+        margin: 1px 0; /* 문단 간격을 2px -> 1px로 최소화 */
+    }
+    .footer-logo {
+        height: 20px; /* 로고 크기를 25px -> 20px로 최소화 */
+        margin-bottom: 5px; 
+    }
+    .footer-right {
+        text-align: center;
+        margin-top: 5px; /* 상단 여백 추가 조정 */
+    }
+    .footer-right p {
+        margin: 3px 0; /* 우측 상단 링크 문단 간격 축소 */
+    }
+    .footer-right a {
+        margin: 0 4px; /* 링크 간격 축소 */
+    }
+    .footer-icons {
+        margin-top: 5px;
+    }
+    .footer-icons a {
+        margin: 0 6px; /* 아이콘 좌우 간격 축소 */
+        font-size: 1.1rem; /* 아이콘 크기 축소 */
+    }
+
+    .about {
+        padding: 50px 15px; /* 상하 패딩 축소, 좌우 여백 확보 */
+    }
+    
+    .about-text {
+        margin: 0 auto 30px auto; /* 아래쪽 여백 축소 */
+    }
+    
+    /* "안녕하세요. 성신여대 유일 아마추어 오케스트라 정동아리 CRYSTAL입니다." */
+    .about-text p:first-child {
+        font-size: 0.9rem !important; /* 첫 문단 크기를 1.5rem에서 1.1rem으로 축소 */
+        line-height: 1.4;
+    }
+
+    /* "'크리스탈'은 성신여자대학교의 엠블럼인 '수정'을 뜻하며..." 본문 내용 */
+    .about-text p:last-child {
+        font-size: 0.8rem !important; /* 본문 글씨 크기를 1rem에서 0.8rem로 축소 */
+        line-height: 1.6; /* 줄 간격을 2에서 1.6으로 축소 */
+        margin-top: 10px !important; /* 위쪽 여백 축소 */
+    }
+    
+    /* 통계/현황 부분 */
+    .about-stats {
+        gap: 30px; /* 통계 항목 간격 축소 */
+    }
+    .stat h2 {
+        font-size: 1.5rem; /* 숫자 크기 축소 */
+    }
+    .stat p {
+        font-size: 0.8rem; /* 설명 텍스트 크기 축소 */
+    }
+    
+    /* 활동 섹션 (Activity) 조정 */
+    .activity h2 {
+        font-size: 1.5rem;
+    }
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 사진 3개 대신 2개씩 표시 */
+        gap: 10px; /* 사진 간격 축소 */
+    }
+    .photo-grid img {
+        height: 150px; /* 사진 높이 축소 */
+    }
+    
+    /* 오케스트라 배치도 (Orchestra) 조정 */
+    .orchestra h2 {
+        font-size: 1.5rem;
+    }
+    .orchestra .subtitle {
+        font-size: 0.8rem;
+    }
+    .chart-container img {
+        width: 100%; /* 배치도 이미지를 꽉 채우도록 */
+    }
+    
+    /* 후원 섹션 (Support) 조정 */
+    .support {
+        padding: 60px 20px 80px;
+    }
+    .support h3 {
+        font-size: 0.9rem;
+    }
+    .support p {
+        font-size: 0.9rem;
+    }
+    .support strong {
+        font-size: 1.1rem;
+    }
 }
+
 
 .controls {
         display: flex;
@@ -379,7 +499,7 @@ nav ul {
 <body>
 
   <header>
-    <div class="logo" onclick="location.href='main.html'">
+    <div class="logo" onclick="location.href='index.html'">
   <img src="logo.png" alt="CRYSTAL 로고" style="height:40px; cursor:pointer;">
 </div>
 
@@ -393,13 +513,13 @@ nav ul {
   </header>
 
 <section class="main-section">
-  <p>Since 2018.03.02</p>
-  <h1>성신여자대학교</h1>
-  <h1>아마추어 오케스트라</h1>
-  <h1>CRYSTAL</h1>
-    <h1></h1>
-  <button>지원하기</button>
-  <div class="scroll-down">&#x25BC;</div>
+  <p>Since 2018.03.02</p>
+  <h1>성신여자대학교</h1>
+  <h1>아마추어 오케스트라</h1>
+  <h1>CRYSTAL</h1>
+    <h1></h1>
+    <button id="applyButton">지원하기</button>
+  <div class="scroll-down">&#x25BC;</div>
 </section>
 
 <section id="about" class="about">
@@ -457,63 +577,72 @@ nav ul {
   <p>크리스탈이 더욱 더 다채로운 연주를 할 수 있도록<br>많은 관심과 후원 부탁드립니다</p>
   <strong>카카오뱅크 3333-25-7747 오*이</strong>
 
-  <div class="social-links">
-    <a href="https://www.youtube.com" target="_blank">
-      <i class="fab fa-youtube"></i>유튜브
-    </a>
-    <a href="https://www.instagram.com" target="_blank">
-      <i class="fab fa-instagram"></i>인스타그램
-    </a>
-    <a href="https://linktr.ee" target="_blank">
-      <i class="fa-solid fa-asterisk"></i>링크트리
-    </a>
+    <div class="social-links">
+        <a href="https://www.youtube.com/@%EC%84%B1%EC%8B%A0%EC%97%AC%EB%8C%80%EC%95%84%EB%A7%88%EC%B6%94%EC%96%B4%EC%98%A4%EC%BC%80" target="_blank">
+            <img src="youtube.png" alt="YouTube">
+        </a>
+        <a href="https://www.instagram.com/sswu_crystal/" target="_blank">
+            <img src="instagram.png" alt="Instagram">
+        </a>
+        <a href="https://linktr.ee" target="_blank">
+            <img src="Vector.png" alt="Linktree">
+        </a>
+    </div>
   </div>
 </section>
 
 <script>
-  const generationPhotos = {
-    1: ["images/1_1.jpg","images/1_2.jpg","images/1_3.jpg"],
-    2: ["images/2_1.jpg","images/2_2.jpg","images/2_3.jpg"],
-    3: ["images/3_1.jpg","images/3_2.jpg","images/3_3.jpg"],
-    4: ["images/4_1.jpg","images/4_2.jpg","images/4_3.jpg"],
-    5: ["images/5_1.jpg","images/5_2.jpg","images/5_3.jpg"],
-    6: ["images/6_1.jpg","images/6_2.jpg","images/6_3.jpg"],
-    7: ["images/7_1.jpg","images/7_2.jpg","images/7_3.jpg"],
-    8: ["images/8_1.jpg","images/8_2.jpg","images/8_3.jpg"]
-  };
-// 사진 로드 공통 함수
-function renderPhotos(gen) {
-    photoGrid.innerHTML = '';
-    if(!gen || !generationPhotos[gen]){
-        photoGrid.innerHTML = '<p style="grid-column:1/-1; color:#aaa;">해당 기수의 사진이 없습니다.</p>';
-        activityTitle.textContent = `활동 사진을 선택해주세요.`;
-        return;
-     }
+const naverFormLink = ""; // 지원 기간 아닐 때는 빈 문자열
 
-    const photos = generationPhotos[gen];
-    photos.forEach(src => {
+function handleApplyClick() {
+    if (naverFormLink && naverFormLink !== "") {
+        window.open(naverFormLink, '_blank'); 
+    } else {
+        alert('현재 지원 기간이 아닙니다.');
+    }
+}
+
+// 세대별 사진 데이터
+const generationPhotos = {
+    1: ["images/1_1.jpg", "images/1_2.jpg", "images/1_3.jpg"],
+    2: ["images/2_1.jpg", "images/2_2.jpg", "images/2_3.jpg"],
+    3: ["images/3_1.jpg", "images/3_2.jpg", "images/3_3.jpg"],
+    4: ["images/4_1.jpg", "images/4_2.jpg", "images/4_3.jpg"],
+    5: ["images/5_1.jpg", "images/5_2.jpg", "images/5_3.jpg"],
+    6: ["images/6_1.jpg", "images/6_2.jpg", "images/6_3.jpg"],
+    7: ["images/7_1.jpg", "images/7_2.jpg", "images/7_3.jpg"],
+    8: ["images/8_1.jpg", "images/8_2.jpg", "images/8_3.jpg"]
+};
+
+// 사진 표시 함수
+function renderPhotos(gen) {
+    const photoGrid = document.getElementById('photoGrid');
+    if (!photoGrid) return;
+
+    photoGrid.innerHTML = '';
+
+    if (!gen || !generationPhotos[gen]) {
+        photoGrid.innerHTML = `<p style="grid-column:1/-1; color:#aaa;">사진이 없습니다.</p>`;
+        return;
+    }
+
+    generationPhotos[gen].forEach(src => {
         const img = document.createElement('img');
         img.src = src;
         img.alt = `${gen}기 활동 사진`;
         photoGrid.appendChild(img);
-     });
-    activityTitle.textContent = `크리스탈 ${gen}기 활동 사진입니다.`;
-    }
+    });
+}
 
-    // 드롭다운 변경 시 호출되는 함수 (복원)
-    function changeGeneration(){
-    const val = document.getElementById('generationSelect').value;
-     renderPhotos(val);
-    }
+// 세대 변경 시 실행
+function changeGeneration() {
+    const select = document.getElementById('generationSelect');
+    const gen = select.value;
+    renderPhotos(gen);
+}
 
-    // 페이지 로드 시 8기 사진을 기본으로 로드하는 함수
-     function loadDefaultGeneration() {
-    const defaultGen = document.getElementById('generationSelect').value; // '8'을 가져옴
-    renderPhotos(defaultGen);
-    }
-
-    // 페이지 로드 시 함수 실행
-     document.addEventListener('DOMContentLoaded', loadDefaultGeneration);
+// “지원하기” 버튼 클릭 시 동작 연결
+document.getElementById('applyButton').addEventListener('click', handleApplyClick);
 </script>
 
 <!-- ==== 푸터 ==== -->

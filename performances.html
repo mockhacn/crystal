@@ -156,24 +156,184 @@
         text-align:center;
       margin: 0 auto;
     }
+
+@media (max-width: 768px) {
+    /* 헤더 패딩 조정 */
+    header {
+        padding: 15px 20px;
+    }
     
-    @media (max-width: 768px) {
-        .title-area .controls {
-            position: static;
-            transform: none;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .title-area { padding-bottom: 20; }
-        .performance-type-tabs { text-align: center; }
+    /* 네비게이션 메뉴 (동아리, 단원, 공연) 가로 유지 및 간격 조정 */
+    nav ul {
+        gap: 20px; /* 가로 간격 축소 */
+    }
+    nav ul li a {
+        font-size: 0.9rem; /* 글씨 크기 축소 */
     }
 
+    /* 기존 스타일 유지 */
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+}
+
+    /* ==== 푸터 ==== */
+.footer {
+  background-color: #1a1a1a;
+  color: #aaa;
+  padding: 60px 40px;
+  border-top: 1px solid #222;
+  font-size: 0.9rem;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.footer-left {
+  flex: 1 1 100px;
+}
+.footer-logo {
+  height: 40px;
+  margin-bottom: 15px;
+}
+.footer-right {
+  text-align: right;
+  flex: 1 1 50px;
+}
+.footer-right a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-right a:hover {
+  color: white;
+}
+.footer-icons {
+  margin-top: 15px;
+}
+.footer-icons a {
+  color: #ccc;
+  font-size: 1.4rem;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+.footer-icons a:hover {
+  color: white;
+}
+@media (max-width: 768px) {
+    /* (헤더 및 기타 스타일은 유지) */
+    header { padding: 15px 20px; }
+    nav ul { gap: 20px; }
+    nav ul li a { font-size: 0.9rem; }
+    .photo-grid {grid-template-columns:1fr;}
+    .social-links a {width:70px; height:70px; font-size:0.8rem;}
+    .social-links i {font-size:1.5rem;}
+    
+    /* 👇👇 푸터 최소화 최종 버전 👇👇 */
+    .footer {
+        padding: 25px 15px; /* 상하 패딩을 30px -> 25px로 더 축소 */
+        font-size: 0.75rem; /* 글씨 크기를 0.8rem -> 0.75rem로 축소 */
+        line-height: 1.4; /* 줄 간격 압축 */
+    }
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 8px; /* 섹션 간격을 10px -> 8px로 축소 */
+    }
+    .footer-left p {
+        margin: 1px 0; /* 문단 간격을 2px -> 1px로 최소화 */
+    }
+    .footer-logo {
+        height: 20px; /* 로고 크기를 25px -> 20px로 최소화 */
+        margin-bottom: 5px; 
+    }
+    .footer-right {
+        text-align: center;
+        margin-top: 5px; /* 상단 여백 추가 조정 */
+    }
+    .footer-right p {
+        margin: 3px 0; /* 우측 상단 링크 문단 간격 축소 */
+    }
+    .footer-right a {
+        margin: 0 4px; /* 링크 간격 축소 */
+    }
+    .footer-icons {
+        margin-top: 5px;
+    }
+    .footer-icons a {
+        margin: 0 6px; /* 아이콘 좌우 간격 축소 */
+        font-size: 1.1rem; /* 아이콘 크기 축소 */
+    }
+
+    .performances-page {
+        padding: 100px 10px 50px !important; /* 상단 패딩 축소 */
+    }
+
+    /* 제목 영역의 정렬 및 높이 조정 */
+    .title-area {
+        position: static; /* 모바일에서 절대 위치 해제 */
+        margin-bottom: 20px; /* 제목과 아래 내용 간격 축소 */
+    }
+    .title-area h1 {
+        font-size: 1.8rem; /* 제목 크기 축소 */
+    }
+    .title-area .divider {
+        margin: 8px auto 0; /* 구분선 위 여백 축소 */
+    }
+
+    /* 드롭다운 컨트롤 위치 조정 및 중앙 정렬 */
+    .title-area .controls {
+        position: static; /* 절대 위치 해제 */
+        transform: none; /* 변형 제거 */
+        margin-top: 15px; /* 제목과 드롭다운 사이에 여백 추가 */
+        display: flex; /* 중앙 정렬을 위해 flex 사용 */
+        justify-content: center; /* 가운데 정렬 */
+    }
+
+    /* 드롭다운 스타일 조정 */
+    .title-area select {
+        padding: 6px 12px;
+        font-size: 0.9rem; /* 글씨 크기 축소 */
+    }
+
+    /* 공연 타입 탭 조정 */
+    .performance-type-tabs {
+        text-align: center; /* 탭 중앙 정렬 */
+        margin-bottom: 20px;
+    }
+    .performance-type-tabs .type-button {
+        font-size: 0.9rem;
+    }
+    
+    /* 공연 내용 영역 (패딩 축소) */
+    #performance-content {
+        padding: 25px 15px;
+    }
+    .performance-detail img {
+        max-width: 40%; /* 이미지 크기 모바일에 맞게 조정 */
+        margin-bottom: 15px;
+    }
+    .performance-detail h2 {
+        font-size: 1.4rem; /* 제목 크기 축소 */
+        margin-bottom: 8px;
+    }
+    .performance-detail p {
+        font-size: 0.85rem; /* 본문 텍스트 축소 */
+        line-height: 1.5;
+    }
+}
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo" onclick="location.href='main.html'">
+    <div class="logo" onclick="location.href='index.html'">
       <img src="logo.png" alt="CRYSTAL 로고" style="height:40px; cursor:pointer;">
     </div>
     <nav>
